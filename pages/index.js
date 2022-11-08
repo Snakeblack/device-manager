@@ -1,13 +1,13 @@
 import axios from "axios";
 import DevicesForm from "../components/DevicesForm";
 
-function HomePage({ devices }) {
-  console.log(devices);
+function HomePage({ device }) {
+  console.log(device);
   return (
     <>
-      <DevicesForm />
+      <DevicesForm device={device} />
       <div>
-        {devices.map((device) => (
+        {device.map((device) => (
           <div key={device.id}>
             <h1>{device.nombre}</h1>
             <p>{device.marca}</p>
@@ -30,12 +30,12 @@ function HomePage({ devices }) {
 }
 
 
-export const  getServerSideProps = async context => {
-  const { data: devices } = await axios.get('http://localhost:3000/api/devices');
+export const getServerSideProps = async context => {
+  const { data: device } = await axios.get('http://localhost:3000/api/devices');
 
   return {
     props: {
-      devices
+      device
     }
   };
 }

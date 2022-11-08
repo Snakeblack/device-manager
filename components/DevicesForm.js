@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 
-export function DevicesForm() {
-  const [device, setDevice] = useState({
+export function DevicesForm({ device }) {
+  const [dispositivo, setDispositivo] = useState({
     nombre: "",
     marca: "",
     modelo: "",
@@ -21,7 +21,7 @@ export function DevicesForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await axios
-      .post("/api/devices", device)
+      .post("/api/devices", dispositivo)
       .then(function (response) {
         console.log(response);
       })
@@ -32,19 +32,40 @@ export function DevicesForm() {
   };
 
   const handleChange = ({ target: { name, value } }) =>
-    setDevice({ ...device, [name]: value });
+    setDispositivo({ ...dispositivo, [name]: value });
 
   return (
-    <div className="bg-gray-300">
-      <form onSubmit={handleSubmit}>
+    <div className="w-full max-w-md">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
         <label htmlFor="nombre">Nombre del Dispositivo:</label>
-        <input type="text" id="nombre" name="nombre" onChange={handleChange} />
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
+        />
 
         <label htmlFor="marca">Marca:</label>
-        <input type="text" id="marca" name="marca" onChange={handleChange} />
+        <input
+          type="text"
+          id="marca"
+          name="marca"
+          onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
+        />
 
         <label htmlFor="modelo">Modelo:</label>
-        <input type="text" id="modelo" name="modelo" onChange={handleChange} />
+        <input
+          type="text"
+          id="modelo"
+          name="modelo"
+          onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
+        />
 
         <label htmlFor="serial_number">Serial:</label>
         <input
@@ -52,6 +73,7 @@ export function DevicesForm() {
           id="serial_number"
           name="serial_number"
           onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
         <label htmlFor="sistema_operativo">Sistema Operativo:</label>
@@ -60,13 +82,26 @@ export function DevicesForm() {
           id="sistema_operativo"
           name="sistema_operativo"
           onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
         <label htmlFor="cpu">CPU:</label>
-        <input type="text" id="cpu" name="cpu" onChange={handleChange} />
+        <input
+          type="text"
+          id="cpu"
+          name="cpu"
+          onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
+        />
 
         <label htmlFor="ram">RAM:</label>
-        <input type="text" id="ram" name="ram" onChange={handleChange} />
+        <input
+          type="text"
+          id="ram"
+          name="ram"
+          onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
+        />
 
         <label htmlFor="disco_duro">Disco:</label>
         <input
@@ -74,13 +109,26 @@ export function DevicesForm() {
           id="disco_duro"
           name="disco_duro"
           onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
         <label htmlFor="congelado">Congelado:</label>
-        <select id="congelado" name="congelado">
-          <option value="true">si</option>
-          <option value="false">no</option>
-        </select>
+        <input
+          type="checkbox"
+          value="1"
+          id="congelado"
+          name="congelado"
+          onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
+        />
+        <input
+          type="hidden"
+          value="0"
+          id="congelado"
+          name="congelado"
+          onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
+        />
 
         <label htmlFor="detalles">Detalles:</label>
         <textarea
@@ -88,13 +136,21 @@ export function DevicesForm() {
           name="detalles"
           rows="2"
           onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
         <label htmlFor="ubicacion_id">Ubicación:</label>
-        <select id="ubicacion_id" name="ubicacion_id" onChange={handleChange}>
-          <option value="1">Ubicación 1</option>
-          <option value="2">Ubicación 2</option>
-          <option value="3">Ubicación 3</option>
+        <select
+          id="ubicacion_id"
+          name="ubicacion_id"
+          onChange={handleChange}
+          value={device.ubicacion_id}
+        >
+          {device.ubicaciones.map((ubicacion) => (
+            <option key={ubicacion.id} value={ubicacion.id}>
+              {ubicacion.nombre}
+            </option>
+          ))}
         </select>
 
         <label htmlFor="tipodispositivo_id">Tipo de Dispositivo:</label>
@@ -118,10 +174,22 @@ export function DevicesForm() {
           <option value="3">Alumnos</option>
         </select>
 
-        <button>Guardar Dispositivo</button>
+        <button className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded focus:outline-none focus:shadow-outline font-bold text-white">
+          Guardar Dispositivo
+        </button>
       </form>
     </div>
   );
+}
+
+export const getServerSideProps = async context => {
+  const { data: device } = await axios.get('http://localhost:3000/api/devices');
+
+  return {
+    props: {
+      device
+    }
+  };
 }
 
 export default DevicesForm;
