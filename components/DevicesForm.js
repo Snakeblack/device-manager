@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-export function DevicesForm({ device }) {
+export function DevicesForm() {
   const [dispositivo, setDispositivo] = useState({
     nombre: "",
     marca: "",
@@ -14,10 +14,33 @@ export function DevicesForm({ device }) {
     congelado: "",
     detalles: "",
     ubicacion_id: "",
-    tipodispositivo_id: "",
     categoria_id: "",
+    tipodispositivo_id: "",
   });
 
+  // Ubicaciones
+  const [ubicaciones, setUbicaciones] = useState([]);
+  const getUbicaciones = async () => {
+    const res = await axios.get("/api/ubications");
+    setUbicaciones(res.data);
+  };
+  
+  // Tipo de Dispositivos
+  const [tipodispositivos, setTipodispositivos] = useState([]);
+  const getTipodispositivos = async () => {
+    const res = await axios.get("/api/tipodispositivo");
+    setTipodispositivos(res.data);
+  };
+
+  // Categorias
+  const [categorias, setCategorias] = useState([]);
+  const getCategorias = async () => {
+    const res = await axios.get("/api/category");
+    setCategorias(res.data);
+  };
+
+
+  // Funcion para guardar los datos
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await axios
@@ -31,16 +54,22 @@ export function DevicesForm({ device }) {
     console.log(res);
   };
 
+  // Cambios en los inputs
   const handleChange = ({ target: { name, value } }) =>
     setDispositivo({ ...dispositivo, [name]: value });
 
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full max-w-xl">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 my-2 grid grid-cols-2 gap-4"
       >
-        <label htmlFor="nombre">Nombre del Dispositivo:</label>
+        <label
+          htmlFor="nombre"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Nombre del Dispositivo:
+        </label>
         <input
           type="text"
           id="nombre"
@@ -49,7 +78,12 @@ export function DevicesForm({ device }) {
           className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
-        <label htmlFor="marca">Marca:</label>
+        <label
+          htmlFor="marca"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Marca:
+        </label>
         <input
           type="text"
           id="marca"
@@ -58,7 +92,12 @@ export function DevicesForm({ device }) {
           className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
-        <label htmlFor="modelo">Modelo:</label>
+        <label
+          htmlFor="modelo"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Modelo:
+        </label>
         <input
           type="text"
           id="modelo"
@@ -67,7 +106,12 @@ export function DevicesForm({ device }) {
           className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
-        <label htmlFor="serial_number">Serial:</label>
+        <label
+          htmlFor="serial_number"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Serial:
+        </label>
         <input
           type="text"
           id="serial_number"
@@ -76,7 +120,12 @@ export function DevicesForm({ device }) {
           className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
-        <label htmlFor="sistema_operativo">Sistema Operativo:</label>
+        <label
+          htmlFor="sistema_operativo"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Sistema Operativo:
+        </label>
         <input
           type="text"
           id="sistema_operativo"
@@ -85,7 +134,12 @@ export function DevicesForm({ device }) {
           className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
-        <label htmlFor="cpu">CPU:</label>
+        <label
+          htmlFor="cpu"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          CPU:
+        </label>
         <input
           type="text"
           id="cpu"
@@ -94,7 +148,12 @@ export function DevicesForm({ device }) {
           className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
-        <label htmlFor="ram">RAM:</label>
+        <label
+          htmlFor="ram"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          RAM:
+        </label>
         <input
           type="text"
           id="ram"
@@ -103,7 +162,12 @@ export function DevicesForm({ device }) {
           className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
-        <label htmlFor="disco_duro">Disco:</label>
+        <label
+          htmlFor="disco_duro"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Disco:
+        </label>
         <input
           type="text"
           id="disco_duro"
@@ -112,14 +176,19 @@ export function DevicesForm({ device }) {
           className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
-        <label htmlFor="congelado">Congelado:</label>
+        <label
+          htmlFor="congelado"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Congelado:
+        </label>
         <input
           type="checkbox"
           value="1"
           id="congelado"
           name="congelado"
           onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
+          className="shadow border rounded py-2 px-3 text-gray-700 justify-self-end"
         />
         <input
           type="hidden"
@@ -130,7 +199,12 @@ export function DevicesForm({ device }) {
           className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
-        <label htmlFor="detalles">Detalles:</label>
+        <label
+          htmlFor="detalles"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Detalles:
+        </label>
         <textarea
           id="detalles"
           name="detalles"
@@ -139,57 +213,78 @@ export function DevicesForm({ device }) {
           className="shadow border rounded py-2 px-3 text-gray-700"
         />
 
-        <label htmlFor="ubicacion_id">Ubicación:</label>
-        <select
-          id="ubicacion_id"
-          name="ubicacion_id"
-          onChange={handleChange}
-          value={device.ubicacion_id}
+        <label
+          htmlFor="ubicacion"
+          className="block text-gray-700 text-sm font-bold mb-2"
         >
-          {device.ubicaciones.map((ubicacion) => (
+          Ubicación
+        </label>
+        <select
+          name="ubicacion"
+          id="ubicacion"
+          onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
+          onClick={getUbicaciones}
+        >
+          <option value="">Seleccione una ubicación</option>
+          {ubicaciones.map((ubicacion) => (
             <option key={ubicacion.id} value={ubicacion.id}>
               {ubicacion.nombre}
             </option>
           ))}
         </select>
 
-        <label htmlFor="tipodispositivo_id">Tipo de Dispositivo:</label>
+        <label
+          htmlFor="tipodispositivo_id"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Tipo de Dispositivo:
+        </label>
         <select
           id="tipodispositivo_id"
           name="tipodispositivo_id"
           onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
+          onClick={getTipodispositivos}
         >
-          <option value="1">Desktop</option>
-          <option value="2">Portátil</option>
-          <option value="3">OPS</option>
-          <option value="4">Impresora</option>
-          <option value="5">Periferico</option>
-          <option value="6">Otro</option>
+          <option value="">Seleccione un tipo de dispositivo</option>
+          {tipodispositivos.map((tipodispositivo) => (
+            <option key={tipodispositivo.id} value={tipodispositivo.id}>
+              {tipodispositivo.nombre}
+            </option>
+          ))}
         </select>
 
-        <label htmlFor="categoria_id">Categoría:</label>
-        <select id="categoria_id" name="categoria_id" onChange={handleChange}>
-          <option value="1">Empleados</option>
-          <option value="2">Aulas</option>
-          <option value="3">Alumnos</option>
+        <label
+          htmlFor="categoria_id"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Categoría:
+        </label>
+        <select
+          id="categoria_id"
+          name="categoria_id"
+          onChange={handleChange}
+          className="shadow border rounded py-2 px-3 text-gray-700"
+          onClick={getCategorias}
+        >
+          <option value="">Seleccione una categoría</option>
+          {categorias.map((categoria) => (
+            <option key={categoria.id} value={categoria.id}>
+              {categoria.nombre}
+            </option>
+          ))}
         </select>
 
-        <button className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded focus:outline-none focus:shadow-outline font-bold text-white">
-          Guardar Dispositivo
+        <button
+          className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded focus:outline-none focus:shadow-outline font-bold text-white uppercase text-xs mt-3"
+          type="submit"
+        >
+          Guardar
         </button>
       </form>
     </div>
   );
-}
-
-export const getServerSideProps = async context => {
-  const { data: device } = await axios.get('http://localhost:3000/api/devices');
-
-  return {
-    props: {
-      device
-    }
-  };
 }
 
 export default DevicesForm;

@@ -5,7 +5,7 @@ function HomePage({ device }) {
   console.log(device);
   return (
     <>
-      <DevicesForm device={device} />
+      <DevicesForm />
       <div>
         {device.map((device) => (
           <div key={device.id}>
@@ -19,9 +19,12 @@ function HomePage({ device }) {
             <p>{device.disco_duro}</p>
             <p>{device.congelado}</p>
             <p>{device.detalles}</p>
-            {/* <p>{device.ubicacion_id}</p>
-            <p>{device.tipodispositivo_id}</p>
-            <p>{device.categoria_id}</p> */}
+            <p>{device.ubicacion}</p>
+            <p>{device.is_aula}</p>
+            <p>{device.red}</p>
+            <p>{device.centro}</p>
+            <p>{device.categoria}</p>
+            <p>{device.tipo_dispositivo}</p>
           </div>
         ))}
       </div>
@@ -32,10 +35,16 @@ function HomePage({ device }) {
 
 export const getServerSideProps = async context => {
   const { data: device } = await axios.get('http://localhost:3000/api/devices');
+  const { data: ubication } = await axios.get('http://localhost:3000/api/ubications');
+  const { data: tipodispositivo } = await axios.get('http://localhost:3000/api/tipodispositivo');
+  const { data: category } = await axios.get('http://localhost:3000/api/category');
 
   return {
     props: {
-      device
+      device,
+      ubication,
+      tipodispositivo,
+      category
     }
   };
 }

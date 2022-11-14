@@ -94,3 +94,9 @@ CREATE TABLE `incidencias` (
   CONSTRAINT `incidencias_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+-- query tablas dispostivo, ubicacion, red, centro, categoria, tipodispositivo completo
+
+SELECT dispositivo.id, dispositivo.nombre, dispositivo.marca, dispositivo.modelo, dispositivo.serial_number, dispositivo.sistema_operativo, dispositivo.cpu, dispositivo.ram, dispositivo.disco_duro, dispositivo.congelado, dispositivo.detalles, dispositivo.ubicacion_id, ubicacion.nombre as ubicacion, ubicacion.is_aula,red.nombre as red, centro.nombre as centro, dispositivo.categoria_id, categoria.nombre as categoria, dispositivo.tipodispositivo_id, tipodispositivo.nombre as tipo_dispositivo FROM dispositivo INNER JOIN ubicacion ON dispositivo.ubicacion_id = ubicacion.id INNER JOIN red ON ubicacion.red_id = red.id INNER JOIN centro ON red.centro_id = centro.id INNER JOIN categoria ON red.categoria_id = categoria.id INNER JOIN tipodispositivo ON dispositivo.tipodispositivo_id = tipodispositivo.id;
+
+
+
