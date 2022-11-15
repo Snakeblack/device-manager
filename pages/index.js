@@ -2,7 +2,7 @@ import axios from "axios";
 import DevicesForm from "../components/DevicesForm";
 
 function HomePage({ device }) {
-  console.log(device);
+  // console.log(device);
   return (
     <>
       <DevicesForm />

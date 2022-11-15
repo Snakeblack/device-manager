@@ -15,7 +15,7 @@ export function DevicesForm() {
     detalles: "",
     ubicacion_id: "",
     categoria_id: "",
-    tipodispositivo_id: "",
+    tipodispositivo_id: ""
   });
 
   // Ubicaciones
@@ -46,10 +46,10 @@ export function DevicesForm() {
     const res = await axios
       .post("/api/devices", dispositivo)
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
       })
       .catch(function (error) {
-        console.log(error.response.data);
+        // console.log(error.response.data);
       });
     console.log(res);
   };
@@ -62,7 +62,7 @@ export function DevicesForm() {
     <div className="w-full max-w-xl">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 my-2 grid grid-cols-2 gap-4"
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 my-2 grid grid-cols-2 gap-4 bg-slate-200"
       >
         <label
           htmlFor="nombre"
@@ -76,6 +76,7 @@ export function DevicesForm() {
           name="nombre"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
+          required
         />
 
         <label
@@ -90,6 +91,7 @@ export function DevicesForm() {
           name="marca"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
+          required
         />
 
         <label
@@ -155,11 +157,12 @@ export function DevicesForm() {
           RAM:
         </label>
         <input
-          type="text"
+          type="number"
           id="ram"
           name="ram"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
+          defaultValue={0}
         />
 
         <label
@@ -169,7 +172,7 @@ export function DevicesForm() {
           Disco:
         </label>
         <input
-          type="text"
+          type="number"
           id="disco_duro"
           name="disco_duro"
           onChange={handleChange}
@@ -182,22 +185,15 @@ export function DevicesForm() {
         >
           Congelado:
         </label>
-        <input
-          type="checkbox"
-          value="1"
-          id="congelado"
-          name="congelado"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700 justify-self-end"
-        />
-        <input
-          type="hidden"
-          value="0"
+        <select
           id="congelado"
           name="congelado"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
-        />
+        >
+          <option value="0">No</option>
+          <option value="1">Si</option>
+        </select>
 
         <label
           htmlFor="detalles"
@@ -214,17 +210,18 @@ export function DevicesForm() {
         />
 
         <label
-          htmlFor="ubicacion"
+          htmlFor="ubicacion_id"
           className="block text-gray-700 text-sm font-bold mb-2"
         >
           Ubicación
         </label>
         <select
-          name="ubicacion"
-          id="ubicacion"
+          name="ubicacion_id"
+          id="ubicacion_id"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
           onClick={getUbicaciones}
+          required
         >
           <option value="">Seleccione una ubicación</option>
           {ubicaciones.map((ubicacion) => (
@@ -246,6 +243,7 @@ export function DevicesForm() {
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
           onClick={getTipodispositivos}
+          required
         >
           <option value="">Seleccione un tipo de dispositivo</option>
           {tipodispositivos.map((tipodispositivo) => (
@@ -267,6 +265,7 @@ export function DevicesForm() {
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
           onClick={getCategorias}
+          required
         >
           <option value="">Seleccione una categoría</option>
           {categorias.map((categoria) => (
@@ -286,5 +285,6 @@ export function DevicesForm() {
     </div>
   );
 }
+
 
 export default DevicesForm;

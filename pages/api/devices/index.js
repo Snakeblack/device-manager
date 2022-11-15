@@ -17,7 +17,7 @@ const getDevices = async (req, res) => {
 }
 
 const saveDevice = async (req, res) => {
-  const {nombre, marca, modelo, serial_number, sistema_operativo, cpu, ram, disco_duro, congelado, detalles, ubicacion_id, tipodispositivo_id, categoria_id} = req.body;
+  const {nombre, marca, modelo, serial_number, sistema_operativo, cpu, ram, disco_duro, congelado, detalles, ubicacion_id, categoria_id, tipodispositivo_id} = req.body;
 
   const [result] = await pool.query('INSERT INTO dispositivo SET ?', {
     nombre,
@@ -37,5 +37,5 @@ const saveDevice = async (req, res) => {
 
   return res
     .status(200)
-    .json({nombre, marca, modelo, serial_number, sistema_operativo, cpu, ram, disco_duro, congelado, detalles, ubicacion_id, tipodispositivo_id, categoria_id, id: result.insertId});
+    .json({nombre, marca, modelo, serial_number, sistema_operativo, cpu, ram, disco_duro, congelado, detalles, ubicacion_id, categoria_id, tipodispositivo_id, id: result.insertId});
 };
