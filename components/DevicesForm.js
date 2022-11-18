@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {useRouter} from 'next/router'
 
 export function DevicesForm() {
   const [dispositivo, setDispositivo] = useState({
@@ -15,8 +16,15 @@ export function DevicesForm() {
     detalles: "",
     ubicacion_id: "",
     categoria_id: "",
-    tipodispositivo_id: ""
+    tipodispositivo_id: "",
+    ubicacion: "",
+    tipo_dispositivo: "",
+    categoria: "",
   });
+
+  const router = useRouter()
+
+  // console.log(router.query)
 
   // Ubicaciones
   const [ubicaciones, setUbicaciones] = useState([]);
@@ -43,20 +51,57 @@ export function DevicesForm() {
   // Funcion para guardar los datos
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios
-      .post("/api/devices", dispositivo)
+    
+    
+    if (router.query.id) {
+      // console.log("Editando");
+      const res = await axios.put(`/api/device/${router.query.id}`, dispositivo);
+      // console.log(res);
+    } else {
+      const res = await axios
+      .post("/api/device", dispositivo)
       .then(function (response) {
         // console.log(response);
       })
       .catch(function (error) {
         // console.log(error.response.data);
       });
-    console.log(res);
+    }
+    router.push('/')
   };
 
   // Cambios en los inputs
   const handleChange = ({ target: { name, value } }) =>
     setDispositivo({ ...dispositivo, [name]: value });
+
+  useEffect(() => {
+    const getDevice = async () => {
+      const {data} = await axios.get("/api/device/" + router.query.id);
+      // console.log(data);
+      setDispositivo({
+        nombre: data.nombre,
+        marca: data.marca,
+        modelo: data.modelo ? data.modelo : "",
+        serial_number: data.serial_number ? data.serial_number : "",
+        sistema_operativo: data.sistema_operativo ? data.sistema_operativo : "",
+        cpu: data.cpu ? data.cpu : "",
+        ram: data.ram ? data.ram : "",
+        disco_duro: data.disco_duro ? data.disco_duro : "",
+        congelado: data.congelado ? data.congelado : "",
+        detalles: data.detalles ? data.detalles : "",
+        ubicacion_id: data.ubicacion_id,
+        categoria_id: data.categoria_id,
+        tipodispositivo_id: data.tipodispositivo_id,
+        ubicacion: data.ubicacion,
+        tipo_dispositivo: data.tipo_dispositivo,
+        categoria: data.categoria,
+      });
+    };
+
+    if(router.query.id){
+      getDevice(router.query.id)
+    }
+  }, [])
 
   return (
     <div className="w-full max-w-xl">
@@ -77,6 +122,7 @@ export function DevicesForm() {
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
           required
+          value={dispositivo.nombre}
         />
 
         <label
@@ -92,6 +138,7 @@ export function DevicesForm() {
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
           required
+          value={dispositivo.marca}
         />
 
         <label
@@ -106,6 +153,7 @@ export function DevicesForm() {
           name="modelo"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
+          value={dispositivo.modelo}
         />
 
         <label
@@ -120,6 +168,7 @@ export function DevicesForm() {
           name="serial_number"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
+          value={dispositivo.serial_number}
         />
 
         <label
@@ -134,6 +183,7 @@ export function DevicesForm() {
           name="sistema_operativo"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
+          value={dispositivo.sistema_operativo}
         />
 
         <label
@@ -148,6 +198,7 @@ export function DevicesForm() {
           name="cpu"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
+          value={dispositivo.cpu}
         />
 
         <label
@@ -162,7 +213,7 @@ export function DevicesForm() {
           name="ram"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
-          defaultValue={0}
+          value={dispositivo.ram}
         />
 
         <label
@@ -177,6 +228,7 @@ export function DevicesForm() {
           name="disco_duro"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
+          value={dispositivo.disco_duro}
         />
 
         <label
@@ -190,7 +242,15 @@ export function DevicesForm() {
           name="congelado"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
+          
         >
+          {
+            router.query.id ? (
+              <option value={dispositivo.congelado}>{dispositivo.congelado ? "Si" : "No"}</option>
+            ) : (
+              <option value=""></option>
+            )
+          }
           <option value="0">No</option>
           <option value="1">Si</option>
         </select>
@@ -204,9 +264,10 @@ export function DevicesForm() {
         <textarea
           id="detalles"
           name="detalles"
-          rows="2"
+          rows="3"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
+          value={dispositivo.detalles}
         />
 
         <label
@@ -223,12 +284,16 @@ export function DevicesForm() {
           onClick={getUbicaciones}
           required
         >
-          <option value="">Seleccione una ubicación</option>
-          {ubicaciones.map((ubicacion) => (
-            <option key={ubicacion.id} value={ubicacion.id}>
-              {ubicacion.nombre}
-            </option>
-          ))}
+          <option value={dispositivo.ubicacion_id}>{dispositivo.ubicacion}</option>
+          <optgroup
+            label="Opciones"
+          >
+            {ubicaciones.map((ubicacion) => (
+              <option key={ubicacion.id} value={ubicacion.id}>
+                {ubicacion.nombre}
+              </option>
+            ))}
+          </optgroup>
         </select>
 
         <label
@@ -245,12 +310,16 @@ export function DevicesForm() {
           onClick={getTipodispositivos}
           required
         >
-          <option value="">Seleccione un tipo de dispositivo</option>
-          {tipodispositivos.map((tipodispositivo) => (
-            <option key={tipodispositivo.id} value={tipodispositivo.id}>
-              {tipodispositivo.nombre}
-            </option>
-          ))}
+          <option value={dispositivo.tipodispositivo_id}>{dispositivo.tipo_dispositivo}</option>
+          <optgroup
+            label="Opciones"
+          >
+            {tipodispositivos.map((tipodispositivo) => (
+              <option key={tipodispositivo.id} value={tipodispositivo.id}>
+                {tipodispositivo.nombre}
+              </option>
+            ))}
+          </optgroup>
         </select>
 
         <label
@@ -267,19 +336,25 @@ export function DevicesForm() {
           onClick={getCategorias}
           required
         >
-          <option value="">Seleccione una categoría</option>
-          {categorias.map((categoria) => (
-            <option key={categoria.id} value={categoria.id}>
-              {categoria.nombre}
-            </option>
-          ))}
+          <option value={dispositivo.categoria_id}>{dispositivo.categoria}</option>
+          <optgroup
+            label="Opciones"
+          >
+            {categorias.map((categoria) => (
+              <option key={categoria.id} value={categoria.id}>
+                {categoria.nombre}
+              </option>
+            ))}
+          </optgroup>
         </select>
 
         <button
           className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded focus:outline-none focus:shadow-outline font-bold text-white uppercase text-xs mt-3"
           type="submit"
         >
-          Guardar
+          {
+            router.query.id ? 'Editar Dispositivo' : 'Guardar Dispositivo'
+          }
         </button>
       </form>
     </div>

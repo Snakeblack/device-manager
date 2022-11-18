@@ -1,52 +1,45 @@
 import axios from "axios";
-import DevicesForm from "../components/DevicesForm";
+
+import { Layout } from "../components/Layout";
+import Link from "next/link";
 
 function HomePage({ device }) {
   // console.log(device);
   return (
-    <>
-      <DevicesForm />
-      <div>
-        {device.map((device) => (
-          <div key={device.id}>
-            <h1>{device.nombre}</h1>
-            <p>{device.marca}</p>
-            <p>{device.modelo}</p>
-            <p>{device.serial_number}</p>
-            <p>{device.sistema_operativo}</p>
-            <p>{device.cpu}</p>
-            <p>{device.ram}</p>
-            <p>{device.disco_duro}</p>
-            <p>{device.congelado}</p>
-            <p>{device.detalles}</p>
-            <p>{device.ubicacion}</p>
-            <p>{device.is_aula}</p>
-            <p>{device.red}</p>
-            <p>{device.centro}</p>
-            <p>{device.categoria}</p>
-            <p>{device.tipo_dispositivo}</p>
-          </div>
-        ))}
-      </div>
-    </>
+    <Layout>
+      {device.map((device) => (
+        <Link href={`/device/${device.id}`} key={device.id}>
+            <div className="border border-gray-200 shadow-md p-6">
+              <h1>{device.nombre}</h1>
+              <p>{device.marca}</p>
+              <p>{device.modelo}</p>
+              <p>{device.serial_number}</p>
+              <p>{device.sistema_operativo}</p>
+              <p>{device.cpu}</p>
+              <p>{device.ram}</p>
+              <p>{device.disco_duro}</p>
+              <p>{device.congelado == 1 ? "Congelado" : device.congelado == 0 ? "No congelado" : ""}</p>
+              <p>{device.detalles}</p>
+              <p>{device.ubicacion}</p>
+              <p>{device.red}</p>
+              <p>{device.centro}</p>
+              <p>{device.categoria}</p>
+              <p>{device.tipo_dispositivo}</p>
+            </div>
+        </Link>
+      ))}
+    </Layout>
   );
 }
 
-
-export const getServerSideProps = async context => {
-  const { data: device } = await axios.get('http://localhost:3000/api/devices');
-  const { data: ubication } = await axios.get('http://localhost:3000/api/ubications');
-  const { data: tipodispositivo } = await axios.get('http://localhost:3000/api/tipodispositivo');
-  const { data: category } = await axios.get('http://localhost:3000/api/category');
+export const getServerSideProps = async (context) => {
+  const { data: device } = await axios.get("http://localhost:3000/api/device");
 
   return {
     props: {
       device,
-      ubication,
-      tipodispositivo,
-      category
-    }
+    },
   };
-}
+};
 
 export default HomePage;

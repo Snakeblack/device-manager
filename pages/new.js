@@ -1,6 +1,11 @@
+import DevicesForm from "../components/DevicesForm";
+import { Layout } from "../components/Layout";
+
 function NewPage() {
   return (
-    <div>Add Device</div>
+    <Layout>
+      <DevicesForm />
+    </Layout>
   )
 }
 
