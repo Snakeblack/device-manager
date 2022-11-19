@@ -6,7 +6,7 @@ function NewPage() {
     <Layout>
       <DevicesForm />
     </Layout>
-  )
+  );
 }
 
 export default NewPage;

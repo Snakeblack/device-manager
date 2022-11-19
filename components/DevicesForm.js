@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {useRouter} from 'next/router'
+import { useRouter } from "next/router";
 
 export function DevicesForm() {
   const [dispositivo, setDispositivo] = useState({
@@ -22,7 +22,7 @@ export function DevicesForm() {
     categoria: "",
   });
 
-  const router = useRouter()
+  const router = useRouter();
 
   // console.log(router.query)
 
@@ -32,7 +32,7 @@ export function DevicesForm() {
     const res = await axios.get("/api/ubications");
     setUbicaciones(res.data);
   };
-  
+
   // Tipo de Dispositivos
   const [tipodispositivos, setTipodispositivos] = useState([]);
   const getTipodispositivos = async () => {
@@ -47,27 +47,28 @@ export function DevicesForm() {
     setCategorias(res.data);
   };
 
-
   // Funcion para guardar los datos
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    
+
     if (router.query.id) {
       // console.log("Editando");
-      const res = await axios.put(`/api/device/${router.query.id}`, dispositivo);
+      const res = await axios.put(
+        `/api/device/${router.query.id}`,
+        dispositivo
+      );
       // console.log(res);
     } else {
       const res = await axios
-      .post("/api/device", dispositivo)
-      .then(function (response) {
-        // console.log(response);
-      })
-      .catch(function (error) {
-        // console.log(error.response.data);
-      });
+        .post("/api/device", dispositivo)
+        .then(function (response) {
+          // console.log(response);
+        })
+        .catch(function (error) {
+          // console.log(error.response.data);
+        });
     }
-    router.push('/')
+    router.push("/");
   };
 
   // Cambios en los inputs
@@ -76,7 +77,7 @@ export function DevicesForm() {
 
   useEffect(() => {
     const getDevice = async () => {
-      const {data} = await axios.get("/api/device/" + router.query.id);
+      const { data } = await axios.get("/api/device/" + router.query.id);
       // console.log(data);
       setDispositivo({
         nombre: data.nombre,
@@ -98,10 +99,10 @@ export function DevicesForm() {
       });
     };
 
-    if(router.query.id){
-      getDevice(router.query.id)
+    if (router.query.id) {
+      getDevice(router.query.id);
     }
-  }, [])
+  }, []);
 
   return (
     <div className="w-full max-w-xl">
@@ -242,15 +243,14 @@ export function DevicesForm() {
           name="congelado"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
-          
         >
-          {
-            router.query.id ? (
-              <option value={dispositivo.congelado}>{dispositivo.congelado ? "Si" : "No"}</option>
-            ) : (
-              <option value=""></option>
-            )
-          }
+          {router.query.id ? (
+            <option value={dispositivo.congelado}>
+              {dispositivo.congelado ? "Si" : "No"}
+            </option>
+          ) : (
+            <option value=""></option>
+          )}
           <option value="0">No</option>
           <option value="1">Si</option>
         </select>
@@ -284,10 +284,10 @@ export function DevicesForm() {
           onClick={getUbicaciones}
           required
         >
-          <option value={dispositivo.ubicacion_id}>{dispositivo.ubicacion}</option>
-          <optgroup
-            label="Opciones"
-          >
+          <option value={dispositivo.ubicacion_id}>
+            {dispositivo.ubicacion}
+          </option>
+          <optgroup label="Opciones">
             {ubicaciones.map((ubicacion) => (
               <option key={ubicacion.id} value={ubicacion.id}>
                 {ubicacion.nombre}
@@ -310,10 +310,10 @@ export function DevicesForm() {
           onClick={getTipodispositivos}
           required
         >
-          <option value={dispositivo.tipodispositivo_id}>{dispositivo.tipo_dispositivo}</option>
-          <optgroup
-            label="Opciones"
-          >
+          <option value={dispositivo.tipodispositivo_id}>
+            {dispositivo.tipo_dispositivo}
+          </option>
+          <optgroup label="Opciones">
             {tipodispositivos.map((tipodispositivo) => (
               <option key={tipodispositivo.id} value={tipodispositivo.id}>
                 {tipodispositivo.nombre}
@@ -336,10 +336,10 @@ export function DevicesForm() {
           onClick={getCategorias}
           required
         >
-          <option value={dispositivo.categoria_id}>{dispositivo.categoria}</option>
-          <optgroup
-            label="Opciones"
-          >
+          <option value={dispositivo.categoria_id}>
+            {dispositivo.categoria}
+          </option>
+          <optgroup label="Opciones">
             {categorias.map((categoria) => (
               <option key={categoria.id} value={categoria.id}>
                 {categoria.nombre}
@@ -352,14 +352,11 @@ export function DevicesForm() {
           className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded focus:outline-none focus:shadow-outline font-bold text-white uppercase text-xs mt-3"
           type="submit"
         >
-          {
-            router.query.id ? 'Editar Dispositivo' : 'Guardar Dispositivo'
-          }
+          {router.query.id ? "Editar Dispositivo" : "Guardar Dispositivo"}
         </button>
       </form>
     </div>
   );
 }
-
 
 export default DevicesForm;
