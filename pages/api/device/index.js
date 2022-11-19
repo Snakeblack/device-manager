@@ -96,6 +96,6 @@ const saveDevice = async (req, res) => {
       id: result.insertId,
     });
   } catch (error) {
-    console.log(error);
+    return res.status(500).json({ message: error.message });
   }
 };

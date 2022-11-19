@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 export function DevicesForm() {
   const [dispositivo, setDispositivo] = useState({
@@ -29,46 +30,53 @@ export function DevicesForm() {
   // Ubicaciones
   const [ubicaciones, setUbicaciones] = useState([]);
   const getUbicaciones = async () => {
-    const res = await axios.get("/api/ubications");
+    try {
+      const res = await axios.get("/api/ubications");
     setUbicaciones(res.data);
+    } catch (error) {
+      toast.error(error.message || "Error al obtener ubicaciones");
+    }
   };
 
   // Tipo de Dispositivos
   const [tipodispositivos, setTipodispositivos] = useState([]);
   const getTipodispositivos = async () => {
-    const res = await axios.get("/api/tipodispositivo");
+    try {
+      const res = await axios.get("/api/tipodispositivo");
     setTipodispositivos(res.data);
+    } catch (error) {
+      toast.error(error.message || "Error al obtener los tipos de dispositivos");
+    }
   };
 
   // Categorias
   const [categorias, setCategorias] = useState([]);
   const getCategorias = async () => {
-    const res = await axios.get("/api/category");
-    setCategorias(res.data);
+    try {
+      const res = await axios.get("/api/category");
+      setCategorias(res.data);
+    } catch (error) {
+      toast.error(error.message || "Error al obtener las categorias");
+    }
   };
 
   // Funcion para guardar los datos
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (router.query.id) {
-      // console.log("Editando");
-      const res = await axios.put(
-        `/api/device/${router.query.id}`,
-        dispositivo
-      );
-      // console.log(res);
-    } else {
-      const res = await axios
-        .post("/api/device", dispositivo)
-        .then(function (response) {
-          // console.log(response);
-        })
-        .catch(function (error) {
-          // console.log(error.response.data);
-        });
+    try {
+      if (router.query.id) {
+        await axios.put(`/api/device/${router.query.id}`, dispositivo);
+        toast.success("Dispositivo actualizado satisfactoriamente");
+      } else {
+        await axios.post("/api/device", dispositivo);
+        toast.success("Dispositivo creado satisfactoriamente");
+      }
+
+      router.push("/");
+    } catch (error) {
+      toast.error(error.response.data.message || "Error al guardar el dispositivo");
     }
-    router.push("/");
   };
 
   // Cambios en los inputs
@@ -98,14 +106,16 @@ export function DevicesForm() {
         categoria: data.categoria,
       });
     };
-
+    getUbicaciones();
+    getTipodispositivos();
+    getCategorias();
     if (router.query.id) {
       getDevice(router.query.id);
     }
-  }, []);
+  }, [router.query.id]);
 
   return (
-    <div className="w-full max-w-xl">
+    <div className="w-full w-full max-w-screen-sm">
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 my-2 grid grid-cols-2 gap-4 bg-slate-200"
@@ -209,7 +219,7 @@ export function DevicesForm() {
           RAM:
         </label>
         <input
-          type="number"
+          type="text"
           id="ram"
           name="ram"
           onChange={handleChange}
@@ -224,7 +234,7 @@ export function DevicesForm() {
           Disco:
         </label>
         <input
-          type="number"
+          type="text"
           id="disco_duro"
           name="disco_duro"
           onChange={handleChange}
@@ -251,8 +261,10 @@ export function DevicesForm() {
           ) : (
             <option value=""></option>
           )}
-          <option value="0">No</option>
-          <option value="1">Si</option>
+          <optgroup label="Opciones">
+            <option value="0">No</option>
+            <option value="1">Si</option>
+          </optgroup>
         </select>
 
         <label
@@ -281,7 +293,6 @@ export function DevicesForm() {
           id="ubicacion_id"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
-          onClick={getUbicaciones}
           required
         >
           <option value={dispositivo.ubicacion_id}>
@@ -307,7 +318,6 @@ export function DevicesForm() {
           name="tipodispositivo_id"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
-          onClick={getTipodispositivos}
           required
         >
           <option value={dispositivo.tipodispositivo_id}>
@@ -333,7 +343,6 @@ export function DevicesForm() {
           name="categoria_id"
           onChange={handleChange}
           className="shadow border rounded py-2 px-3 text-gray-700"
-          onClick={getCategorias}
           required
         >
           <option value={dispositivo.categoria_id}>

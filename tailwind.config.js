@@ -5,5 +5,12 @@ module.exports = {
     "./components/**/*.{js,jsx,ts,tsx}",
   ],
   plugins: [],
-  theme: {},
+  theme: {
+    extend: {
+      colors: {
+        'mirage-dark': '#16222A',
+        'mirage-light': '#3A6073',
+      },
+    },
+  },
 };

@@ -1,13 +1,18 @@
 import { Layout } from "../../components/Layout";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 function DevicePage({ device }) {
   const router = useRouter();
 
   const handleDelete = async (id) => {
-    await axios.delete(`/api/device/${id}`);
-    router.push("/");
+    try {
+      await axios.delete(`/api/device/${id}`);
+      router.push("/");
+    } catch (error) {
+      toast.error(error.response.data.message || "Error al eliminar el dispositivo");
+    }
   };
 
   return (
@@ -19,13 +24,12 @@ function DevicePage({ device }) {
       <p>{device.serial_number}</p>
       <p>{device.sistema_operativo}</p>
       <p>{device.cpu}</p>
-      <p>{device.ram}GB</p>
-      <p>{device.disco_duro}GB</p>
+      <p>{device.ram}{device.ram ? "GB" : ""}</p>
+      <p>{device.disco_duro}{device.disco_duro ? "GB" : ""}</p>
       <p>{device.congelado == 1 ? "Congelado" : "No congelado"}</p>
       <p>{device.detalles}</p>
       <p>{device.centro}</p>
       <p>{device.ubicacion}</p>
-
       <button
         className="bg-gray-500  hover:bg-gray-700 text-white px-3 py-2 rounded"
         onClick={() => router.push("/device/edit/" + device.id)}
