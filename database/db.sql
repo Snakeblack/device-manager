@@ -75,6 +75,7 @@ CREATE TABLE
         `disco_duro` INT(5) NULL,
         `congelado` BOOLEAN NULL,
         `detalles` varchar(300) NULL,
+        `cuenta_office` varchar(50) NULL,
         `ubicacion_id` int(11) NOT NULL,
         `tipodispositivo_id` int(11) NOT NULL,
         `categoria_id` int(11) NOT NULL,

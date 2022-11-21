@@ -15,6 +15,7 @@ export function DevicesForm() {
     disco_duro: "",
     congelado: "",
     detalles: "",
+    cuenta_office: "",
     ubicacion_id: "",
     categoria_id: "",
     tipodispositivo_id: "",
@@ -32,7 +33,7 @@ export function DevicesForm() {
   const getUbicaciones = async () => {
     try {
       const res = await axios.get("/api/ubications");
-    setUbicaciones(res.data);
+      setUbicaciones(res.data);
     } catch (error) {
       toast.error(error.message || "Error al obtener ubicaciones");
     }
@@ -43,9 +44,11 @@ export function DevicesForm() {
   const getTipodispositivos = async () => {
     try {
       const res = await axios.get("/api/tipodispositivo");
-    setTipodispositivos(res.data);
+      setTipodispositivos(res.data);
     } catch (error) {
-      toast.error(error.message || "Error al obtener los tipos de dispositivos");
+      toast.error(
+        error.message || "Error al obtener los tipos de dispositivos"
+      );
     }
   };
 
@@ -75,7 +78,9 @@ export function DevicesForm() {
 
       router.push("/");
     } catch (error) {
-      toast.error(error.response.data.message || "Error al guardar el dispositivo");
+      toast.error(
+        error.response.data.message || "Error al guardar el dispositivo"
+      );
     }
   };
 
@@ -98,6 +103,7 @@ export function DevicesForm() {
         disco_duro: data.disco_duro ? data.disco_duro : "",
         congelado: data.congelado ? data.congelado : "",
         detalles: data.detalles ? data.detalles : "",
+        cuenta_office: data.cuenta_office ? data.cuenta_office : "",
         ubicacion_id: data.ubicacion_id,
         categoria_id: data.categoria_id,
         tipodispositivo_id: data.tipodispositivo_id,
@@ -115,197 +121,243 @@ export function DevicesForm() {
   }, [router.query.id]);
 
   return (
-    <div className="w-full w-full max-w-screen-sm">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 my-2 grid grid-cols-2 gap-4 bg-slate-200"
-      >
-        <label
-          htmlFor="nombre"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Nombre del Dispositivo:
-        </label>
-        <input
-          type="text"
-          id="nombre"
-          name="nombre"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          required
-          value={dispositivo.nombre}
-        />
+    <div className="w-full w-full max-w-screen-lg mx-auto mt-10">
+      <form onSubmit={handleSubmit}>
+        <div className="grid md:grid-cols-3 md:gap-6">
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              required
+              value={dispositivo.nombre}
+            />
+            <label
+              htmlFor="nombre"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Nombre del Dispositivo
+            </label>
+          </div>
 
-        <label
-          htmlFor="marca"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Marca:
-        </label>
-        <input
-          type="text"
-          id="marca"
-          name="marca"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          required
-          value={dispositivo.marca}
-        />
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type="text"
+              id="marca"
+              name="marca"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              required
+              value={dispositivo.marca}
+            />
+            <label
+              htmlFor="marca"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Marca
+            </label>
+          </div>
 
-        <label
-          htmlFor="modelo"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Modelo:
-        </label>
-        <input
-          type="text"
-          id="modelo"
-          name="modelo"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          value={dispositivo.modelo}
-        />
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type="text"
+              id="modelo"
+              name="modelo"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              value={dispositivo.modelo}
+            />
+            <label
+              htmlFor="modelo"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Modelo
+            </label>
+          </div>
+        </div>
 
-        <label
-          htmlFor="serial_number"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Serial:
-        </label>
-        <input
-          type="text"
-          id="serial_number"
-          name="serial_number"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          value={dispositivo.serial_number}
-        />
+        <div className="grid md:grid-cols-3 md:gap-6">
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type="text"
+              id="serial_number"
+              name="serial_number"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              value={dispositivo.serial_number}
+            />
+            <label
+              htmlFor="serial_number"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Numero de Serie
+            </label>
+          </div>
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type="text"
+              id="sistema_operativo"
+              name="sistema_operativo"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              value={dispositivo.sistema_operativo}
+            />
+            <label
+              htmlFor="sistema_operativo"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Sistema Operativo
+            </label>
+          </div>
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type="text"
+              id="cpu"
+              name="cpu"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              value={dispositivo.cpu}
+            />
+            <label
+              htmlFor="cpu"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              CPU
+            </label>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-3 md:gap-6">
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type="text"
+              id="ram"
+              name="ram"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              value={dispositivo.ram}
+            />
+            <label
+              htmlFor="ram"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Memoria RAM (GB)
+            </label>
+          </div>
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type="text"
+              id="disco_duro"
+              name="disco_duro"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              value={dispositivo.disco_duro}
+            />
+            <label
+              htmlFor="disco_duro"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Almacenamiento (GB)
+            </label>
+          </div>
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type="email"
+              id="cuenta_office"
+              name="cuenta_office"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              value={dispositivo.cuenta_office}
+            />
+            <label
+              htmlFor="cuenta_office"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Cuenta Office
+            </label>
+          </div>
+        </div>
+        <div class="relative z-0 mb-6 w-full group">
+          <textarea
+            id="detalles"
+            name="detalles"
+            rows="1"
+            onChange={handleChange}
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            placeholder=" "
+            value={dispositivo.detalles}
+          />
+          <label
+            htmlFor="detalles"
+            className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >
+            Detalles
+          </label>
+        </div>
+        <div className="grid md:grid-cols-4 md:gap-6">
+        <div class="relative z-0 mb-6 w-full group">
+          <label htmlFor="congelado" className="sr-only">
+            Congelado
+          </label>
+          <select
+            id="congelado"
+            name="congelado"
+            onChange={handleChange}
+            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+          >
+            {router.query.id ? (
+              <option value={dispositivo.congelado}>
+                {dispositivo.congelado == 1
+                  ? dispositivo.congelado == 0
+                    ? "No"
+                    : "Si"
+                  : ""}
+              </option>
+            ) : (
+              <option selected="">Selecciona el estado</option>
+            )}
+            <option value="0">Congelado</option>
+            <option value="1">No Congelado</option>
+            <option value="">Ninguno</option>
+          </select>
+        </div>
 
-        <label
-          htmlFor="sistema_operativo"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Sistema Operativo:
-        </label>
-        <input
-          type="text"
-          id="sistema_operativo"
-          name="sistema_operativo"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          value={dispositivo.sistema_operativo}
-        />
+        <div class="relative z-0 mb-6 w-full group">
+          <label htmlFor="ubicacion_id" className="sr-only">
+            Ubicación
+          </label>
+          <select
+            name="ubicacion_id"
+            id="ubicacion_id"
+            onChange={handleChange}
+            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            required
+          >
+            {router.query.id ? (
+              <option value={dispositivo.ubicacion_id}>
+                {dispositivo.ubicacion}
+              </option>
+            ) : (
+              <option selected="">Selecciona la ubicación</option>
+            )}
 
-        <label
-          htmlFor="cpu"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          CPU:
-        </label>
-        <input
-          type="text"
-          id="cpu"
-          name="cpu"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          value={dispositivo.cpu}
-        />
-
-        <label
-          htmlFor="ram"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          RAM:
-        </label>
-        <input
-          type="text"
-          id="ram"
-          name="ram"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          value={dispositivo.ram}
-        />
-
-        <label
-          htmlFor="disco_duro"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Disco:
-        </label>
-        <input
-          type="text"
-          id="disco_duro"
-          name="disco_duro"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          value={dispositivo.disco_duro}
-        />
-
-        <label
-          htmlFor="congelado"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Congelado:
-        </label>
-        <select
-          id="congelado"
-          name="congelado"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-        >
-          {router.query.id ? (
-            <option value={dispositivo.congelado}>
-              {dispositivo.congelado ? "Si" : "No"}
-            </option>
-          ) : (
-            <option value=""></option>
-          )}
-          <optgroup label="Opciones">
-            <option value="0">No</option>
-            <option value="1">Si</option>
-          </optgroup>
-        </select>
-
-        <label
-          htmlFor="detalles"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Detalles:
-        </label>
-        <textarea
-          id="detalles"
-          name="detalles"
-          rows="3"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          value={dispositivo.detalles}
-        />
-
-        <label
-          htmlFor="ubicacion_id"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Ubicación
-        </label>
-        <select
-          name="ubicacion_id"
-          id="ubicacion_id"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          required
-        >
-          <option value={dispositivo.ubicacion_id}>
-            {dispositivo.ubicacion}
-          </option>
-          <optgroup label="Opciones">
             {ubicaciones.map((ubicacion) => (
               <option key={ubicacion.id} value={ubicacion.id}>
                 {ubicacion.nombre}
               </option>
             ))}
-          </optgroup>
-        </select>
+          </select>
+        </div>
 
         <label
           htmlFor="tipodispositivo_id"
@@ -356,7 +408,7 @@ export function DevicesForm() {
             ))}
           </optgroup>
         </select>
-
+        </div>
         <button
           className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded focus:outline-none focus:shadow-outline font-bold text-white uppercase text-xs mt-3"
           type="submit"
