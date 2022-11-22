@@ -27,20 +27,20 @@ const getUbication = async (req, res) => {
 };
 
 const saveUbication = async (req, res) => {
-  const { nombre, is_aula, red_id, categoria_id } = req.body;
+  const { nombre, is_aula, centro_id, red_id } = req.body;
 
-  const [result] = await pool.query("INSERT INTO ubcacion SET ?", {
+  const [result] = await pool.query("INSERT INTO ubicacion SET ?", {
     nombre,
     is_aula,
+    centro_id,
     red_id,
-    categoria_id,
   });
 
   return res.status(200).json({
     nombre,
     is_aula,
+    centro_id,
     red_id,
-    categoria_id,
     id: result.insertId,
   });
 };

@@ -305,116 +305,120 @@ export function DevicesForm() {
           </label>
         </div>
         <div className="grid md:grid-cols-4 md:gap-6">
-        <div class="relative z-0 mb-6 w-full group">
-          <label htmlFor="congelado" className="sr-only">
-            Congelado
-          </label>
-          <select
-            id="congelado"
-            name="congelado"
-            onChange={handleChange}
-            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+          <div class="relative z-0 mb-6 w-full group">
+            <label htmlFor="congelado" className="sr-only">
+              Congelado
+            </label>
+            <select
+              id="congelado"
+              name="congelado"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            >
+              {router.query.id ? (
+                <option value={dispositivo.congelado}>
+                  {dispositivo.congelado == 1
+                    ? dispositivo.congelado == 0
+                      ? "No"
+                      : "Si"
+                    : ""}
+                </option>
+              ) : (
+                <option selected="">Selecciona el estado</option>
+              )}
+              <option value="0">Congelado</option>
+              <option value="1">No Congelado</option>
+              <option value="">Ninguno</option>
+            </select>
+          </div>
+
+          <div class="relative z-0 mb-6 w-full group">
+            <label htmlFor="ubicacion_id" className="sr-only">
+              Ubicación
+            </label>
+            <select
+              name="ubicacion_id"
+              id="ubicacion_id"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              required
+            >
+              {router.query.id ? (
+                <option value={dispositivo.ubicacion_id}>
+                  {dispositivo.ubicacion}
+                </option>
+              ) : (
+                <option selected="">Selecciona la ubicación</option>
+              )}
+
+              {ubicaciones.map((ubicacion) => (
+                <option key={ubicacion.id} value={ubicacion.id}>
+                  {ubicacion.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div class="relative z-0 mb-6 w-full group">
+            <label htmlFor="tipodispositivo_id" className="sr-only">
+              Tipo de Dispositivo
+            </label>
+            <select
+              id="tipodispositivo_id"
+              name="tipodispositivo_id"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              required
+            >
+              {router.query.id ? (
+                <option value={dispositivo.tipodispositivo_id}>
+                  {dispositivo.tipo_dispositivo}
+                </option>
+              ) : (
+                <option selected="">Selecciona el tipo de dispositivo</option>
+              )}
+              {tipodispositivos.map((tipodispositivo) => (
+                <option key={tipodispositivo.id} value={tipodispositivo.id}>
+                  {tipodispositivo.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div class="relative z-0 mb-6 w-full group">
+            <label htmlFor="categoria_id" className="sr-only">
+              Categoría:
+            </label>
+            <select
+              id="categoria_id"
+              name="categoria_id"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              required
+            >
+              {router.query.id ? (
+                <option value={dispositivo.categoria_id}>
+                  {dispositivo.categoria}
+                </option>
+              ) : (
+                <option selected="">Selecciona la categoría</option>
+              )}
+              {categorias.map((categoria) => (
+                <option key={categoria.id} value={categoria.id}>
+                  {categoria.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div
+          className="flex justify-end items-center mt-6"
+        >
+          <button
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            type="submit"
           >
-            {router.query.id ? (
-              <option value={dispositivo.congelado}>
-                {dispositivo.congelado == 1
-                  ? dispositivo.congelado == 0
-                    ? "No"
-                    : "Si"
-                  : ""}
-              </option>
-            ) : (
-              <option selected="">Selecciona el estado</option>
-            )}
-            <option value="0">Congelado</option>
-            <option value="1">No Congelado</option>
-            <option value="">Ninguno</option>
-          </select>
+            {router.query.id ? "Editar Dispositivo" : "Guardar Dispositivo"}
+          </button>
         </div>
-
-        <div class="relative z-0 mb-6 w-full group">
-          <label htmlFor="ubicacion_id" className="sr-only">
-            Ubicación
-          </label>
-          <select
-            name="ubicacion_id"
-            id="ubicacion_id"
-            onChange={handleChange}
-            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-            required
-          >
-            {router.query.id ? (
-              <option value={dispositivo.ubicacion_id}>
-                {dispositivo.ubicacion}
-              </option>
-            ) : (
-              <option selected="">Selecciona la ubicación</option>
-            )}
-
-            {ubicaciones.map((ubicacion) => (
-              <option key={ubicacion.id} value={ubicacion.id}>
-                {ubicacion.nombre}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <label
-          htmlFor="tipodispositivo_id"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Tipo de Dispositivo:
-        </label>
-        <select
-          id="tipodispositivo_id"
-          name="tipodispositivo_id"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          required
-        >
-          <option value={dispositivo.tipodispositivo_id}>
-            {dispositivo.tipo_dispositivo}
-          </option>
-          <optgroup label="Opciones">
-            {tipodispositivos.map((tipodispositivo) => (
-              <option key={tipodispositivo.id} value={tipodispositivo.id}>
-                {tipodispositivo.nombre}
-              </option>
-            ))}
-          </optgroup>
-        </select>
-
-        <label
-          htmlFor="categoria_id"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Categoría:
-        </label>
-        <select
-          id="categoria_id"
-          name="categoria_id"
-          onChange={handleChange}
-          className="shadow border rounded py-2 px-3 text-gray-700"
-          required
-        >
-          <option value={dispositivo.categoria_id}>
-            {dispositivo.categoria}
-          </option>
-          <optgroup label="Opciones">
-            {categorias.map((categoria) => (
-              <option key={categoria.id} value={categoria.id}>
-                {categoria.nombre}
-              </option>
-            ))}
-          </optgroup>
-        </select>
-        </div>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded focus:outline-none focus:shadow-outline font-bold text-white uppercase text-xs mt-3"
-          type="submit"
-        >
-          {router.query.id ? "Editar Dispositivo" : "Guardar Dispositivo"}
-        </button>
       </form>
     </div>
   );

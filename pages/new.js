@@ -1,4 +1,4 @@
-import DevicesForm from "../components/DevicesForm";
+import DevicesForm from "../components/Forms/DevicesForm";
 import { Layout } from "../components/Layout";
 
 function NewPage() {
