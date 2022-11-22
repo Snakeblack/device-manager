@@ -74,7 +74,7 @@ const UbicationsForm = () => {
   }, [router.query.id]);
 
   return (
-    <div className="w-full w-full max-w-screen-lg mx-auto mt-10">
+    <div className="w-full w-full max-w-screen-lg mx-auto mt-8">
       <form onSubmit={handleSubmit}>
         <div className="relative z-0 mb-6 w-full group">
           <input
@@ -101,7 +101,7 @@ const UbicationsForm = () => {
             id="is_aula"
             name="is_aula"
             onChange={handleChange}
-            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
           >
             {router.query.id ? (
               <option value={ubication.is_aula}>
@@ -122,7 +122,8 @@ const UbicationsForm = () => {
             name="centro_id"
             id="centro_id"
             onChange={handleChange}
-            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            onClick={getCenters}
             required
           >
             {router.query.id ? (
@@ -145,7 +146,8 @@ const UbicationsForm = () => {
             name="red_id"
             id="red_id"
             onChange={handleChange}
-            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            onClick={getReds}
             required
           >
             {router.query.id ? (

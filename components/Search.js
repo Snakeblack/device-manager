@@ -4,7 +4,7 @@ function Search() {
   return (
     <div 
       id="search"
-      className="mb-9 md:col-span-11 col-span-10"
+      className="mb-9 md:col-span-9 lg:col-span-10 col-span-10"
     >
       <form>
         <label

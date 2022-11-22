@@ -22,7 +22,7 @@ const CenterForm = () => {
         await axios.post("/api/center", center);
         toast.success("Centro creado");
       }
-      router.push("/ubication/new");
+      router.push("/center/new");
     } catch (error) {
       toast.error("Error al crear el centro");
     }
@@ -54,7 +54,7 @@ const CenterForm = () => {
             name="nombre"
             onChange={handleChange}
             value={center.nombre}
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             required
           />
@@ -71,7 +71,7 @@ const CenterForm = () => {
             name="direccion"
             onChange={handleChange}
             value={center.direccion}
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             required
           />

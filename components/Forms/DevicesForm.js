@@ -43,7 +43,7 @@ export function DevicesForm() {
   const [tipodispositivos, setTipodispositivos] = useState([]);
   const getTipodispositivos = async () => {
     try {
-      const res = await axios.get("/api/tipodispositivo");
+      const res = await axios.get("/api/devicetype");
       setTipodispositivos(res.data);
     } catch (error) {
       toast.error(
@@ -313,7 +313,7 @@ export function DevicesForm() {
               id="congelado"
               name="congelado"
               onChange={handleChange}
-              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             >
               {router.query.id ? (
                 <option value={dispositivo.congelado}>
@@ -340,7 +340,8 @@ export function DevicesForm() {
               name="ubicacion_id"
               id="ubicacion_id"
               onChange={handleChange}
-              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              onClick={getUbicaciones}
               required
             >
               {router.query.id ? (
@@ -366,7 +367,8 @@ export function DevicesForm() {
               id="tipodispositivo_id"
               name="tipodispositivo_id"
               onChange={handleChange}
-              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              onClick={getTipodispositivos}
               required
             >
               {router.query.id ? (
@@ -391,7 +393,8 @@ export function DevicesForm() {
               id="categoria_id"
               name="categoria_id"
               onChange={handleChange}
-              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              onClick={getCategorias}
               required
             >
               {router.query.id ? (

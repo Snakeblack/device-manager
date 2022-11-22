@@ -47,7 +47,7 @@ const RedForm = () => {
         await axios.post("/api/red", red);
         toast.success("Red creada");
       }
-      router.push("/ubication/new");
+      router.push("/red/new");
     } catch (error) {
       toast.error("Error al crear la red");
     }
@@ -103,7 +103,8 @@ const RedForm = () => {
               id="categoria_id"
               name="categoria_id"
               onChange={handleChange}
-              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              value={red.categoria_id}
               required
             >
               {router.query.id ? (
@@ -128,7 +129,8 @@ const RedForm = () => {
             id="centro_id"
             name="centro_id"
             onChange={handleChange}
-            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            value={red.centro_id}
             required
           >
             {router.query.id ? (

@@ -2,13 +2,13 @@ import { Layout } from "../components/Layout";
 import axios from "axios";
 import Search from "../components/Search";
 import Ubications from "../components/Ubications";
-import AddUbication from "../components/AddUbication";
+import AddUbication from "../components/Adds/AddUbication";
 
 function ubication({ data }) {
   return (
     <Layout>
       {/* separar los dos div uno al lado de otro */}
-      <div className="grid grid-cols-12 gap-5">
+      <div className="grid grid-cols-12 gap-4">
         <Search />
         <AddUbication />
       </div>

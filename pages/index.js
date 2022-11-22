@@ -2,7 +2,7 @@ import { Devices } from "../components/Devices";
 import { Layout } from "../components/Layout";
 import axios from "axios";
 import Search from "../components/Search";
-import Add from "../components/Add";
+import Add from "../components/Adds/Add";
 
 function HomePage({ data }) {
   // console.log(device);
