@@ -9,13 +9,11 @@ function HomePage({ data }) {
   return (
     <Layout>
       {/* separar los dos div uno al lado de otro */}
-      <div
-        className="grid grid-cols-12 gap-5"
-      >
+      <div className="grid grid-cols-12 gap-5">
         <Search />
         <Add />
       </div>
-      <Devices device={ data } />
+      <Devices device={data} />
     </Layout>
   );
 }

@@ -2,7 +2,6 @@ import Link from "next/link";
 
 export function Devices({device}) {
   return (
-    // grid de 3 columnas en tailwindcss responsive
     <div 
       className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-6"
     >
