@@ -44,7 +44,10 @@ function DeviceTypeForm() {
   }, [router.query.id]);
 
   return (
-    <div className="w-full max-w-screen-lg mx-auto mt-10">
+    <div className="w-full max-w-screen-lg mx-auto">
+      <h1
+        className="text-2xl font-bold text-gray-900 dark:text-white mb-10"
+      >Tipo de dispositivo</h1>
       <form onSubmit={handleSubmit}>
         <div className="relative z-0 mb-6 w-full group">
           <input

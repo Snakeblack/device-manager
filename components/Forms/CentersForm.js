@@ -46,7 +46,10 @@ const CenterForm = () => {
   }, [router.query.id]);
 
   return (
-    <div className="w-full w-full max-w-screen-lg mx-auto mt-10">
+    <div className="w-full max-w-screen-lg mx-auto">
+      <h1
+        className="text-2xl font-bold text-gray-900 dark:text-white mb-10"
+      >Centro</h1>
       <form onSubmit={handleSubmit}>
         <div className="relative z-0 mb-6 w-full group">
           <input
@@ -54,7 +57,7 @@ const CenterForm = () => {
             name="nombre"
             onChange={handleChange}
             value={center.nombre}
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             required
           />
@@ -71,7 +74,7 @@ const CenterForm = () => {
             name="direccion"
             onChange={handleChange}
             value={center.direccion}
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             required
           />

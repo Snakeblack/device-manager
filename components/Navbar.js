@@ -1,33 +1,36 @@
 import Link from 'next/link'
 import { Navbar, Dropdown, Avatar } from 'flowbite-react'
+import {MdAccountCircle} from 'react-icons/md'
 
 function Navigator() {
   return (
-    <Navbar fluid={true} rounded={true}>
-      <Navbar.Brand href='https://flowbite.com/'>
-        <picture>
-          <source
-            srcSet='https://flowbite.com/docs/images/logo.svg'
-            type='image/svg'
+    <Navbar fluid={true}>
+      <Navbar.Brand href='/'>
+        <svg
+          className='w-8 h-8 mx-2'
+          fill='#ccf'
+          viewBox='0 0 20 20'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path d='M13 7H7v6h6V7z' />
+          <path
+            fillRule='evenodd'
+            d='M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z'
+            clipRule='evenodd'
           />
-          <img
-            src='https://flowbite.com/docs/images/logo.svg'
-            className='mr-3 h-6 sm:h-9'
-            alt='Flowbite Logo'
-          />
-        </picture>
+        </svg>
         <span className='self-center whitespace-nowrap text-xl font-semibold dark:text-white'>
-          Flowbite
+          Device Manager
         </span>
       </Navbar.Brand>
-      <div className='flex md:order-2'>
+      <div className='flex md:order-2 mx-2'>
         <Dropdown
           arrowIcon={false}
           inline={true}
           label={
             <Avatar
               alt='User settings'
-              img='https://flowbite.com/docs/images/people/profile-picture-5.jpg'
+              icon={MdAccountCircle}
               rounded={true}
             />
           }
@@ -44,9 +47,9 @@ function Navigator() {
           <Dropdown.Divider />
           <Dropdown.Item>Sign out</Dropdown.Item>
         </Dropdown>
-        <Navbar.Toggle />
+        {/* <Navbar.Toggle /> */}
       </div>
-      <Navbar.Collapse>
+      {/* <Navbar.Collapse>
         <Navbar.Link href='/navbars' active={true}>
           Home
         </Navbar.Link>
@@ -54,7 +57,7 @@ function Navigator() {
         <Navbar.Link href='/navbars'>Services</Navbar.Link>
         <Navbar.Link href='/navbars'>Pricing</Navbar.Link>
         <Navbar.Link href='/navbars'>Contact</Navbar.Link>
-      </Navbar.Collapse>
+      </Navbar.Collapse> */}
     </Navbar>
   )
 }

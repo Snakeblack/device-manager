@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { classAdd } from './Add'
 
 
 const AddCenter = () => {
@@ -7,7 +8,7 @@ const AddCenter = () => {
       <Link href="/center/new">
         <button
           type="button"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-xs px-2 py-1 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex items-center antialiased"
+          className={classAdd}
         >
           <svg
             className="w-6 h-6"

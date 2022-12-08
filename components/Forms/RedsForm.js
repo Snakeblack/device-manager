@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import AddCategory from '../Adds/AddCategory';
+import AddCenter from '../Adds/AddCenter';
 
 const RedForm = () => {
   const [red, setRed] = useState({
@@ -76,7 +78,14 @@ const RedForm = () => {
   }, [router.query.id]);
 
   return (
-    <div className="w-full max-w-screen-lg mx-auto mt-10">
+    <div className="w-full max-w-screen-lg mx-auto">
+      <h1
+        className="text-2xl font-bold text-gray-900 dark:text-white"
+      >Red</h1>
+      <div className="flex flex-row items-center justify-end mb-2">
+        <AddCategory />
+        <AddCenter />
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="relative z-0 mb-6 w-full group">
           <input
