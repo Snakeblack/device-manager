@@ -1,15 +1,12 @@
-import { createPool } from "mysql2/promise";
+import { createPool } from 'mysql2/promise'
+
+const { DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE } = process.env
 
 const pool = createPool({
-  host: process.env.DB_HOST || "localhost",
-  user: process.env.BD_USER || 
-  "root",
-  password: process.env.DB_PASSWORD || 
-  "snake",
-  port: process.env.BD_PORT ||
-  3306,
-  database: process.env.BD_DATABASE ||
-  "dispositivos",
-});
+  user: DB_USER,
+  database: DB_DATABASE,
+  host: DB_HOST,
+  password: DB_PASSWORD,
+})
 
-export { pool };
+export { pool }
