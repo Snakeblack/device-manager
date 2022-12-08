@@ -1,3 +1,3 @@
-import newDeviceTypePage from "../../devicetype/new";
+// import newDeviceTypePage from "../../devicetype/new";
 
-export default newDeviceTypePage;
+// export default newDeviceTypePage;
