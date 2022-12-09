@@ -1,19 +1,19 @@
+import { Devices } from "../../components/Devices";
+import { Layout } from "../../components/Layout";
 import axios from "axios";
-import { Layout } from "../components/Layout";
-// import { Devices } from "../components/Devices";
-// import Search from "../components/Search";
-// import Add from "../components/Adds/Add";
+import Search from "../../components/Search";
+import Add from "../../components/Adds/Add";
 
-function HomePage({ data }) {
+function DevicePage({ data }) {
   // console.log(device);
   return (
     <Layout>
-      {/* separar los dos div uno al lado de otro
+      {/* separar los dos div uno al lado de otro */}
       <div className="grid grid-cols-12 gap-5">
         <Search />
         <Add />
       </div>
-      <Devices device={data} /> */}
+      <Devices device={data} />
     </Layout>
   );
 }
@@ -28,4 +28,4 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-export default HomePage;
+export default DevicePage;

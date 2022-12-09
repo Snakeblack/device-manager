@@ -105,6 +105,7 @@ const UbicationsForm = () => {
             name="is_aula"
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              // TODO: Problemas con el value en el select
           >
             {router.query.id ? (
               <option value={ubication.is_aula}>
@@ -151,6 +152,7 @@ const UbicationsForm = () => {
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             onClick={getReds}
+              // TODO: Problemas con el value en el select
             required
           >
             {router.query.id ? (

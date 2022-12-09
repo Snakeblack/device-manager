@@ -5,11 +5,11 @@ export const classAdd = "text-white bg-slate-700 hover:bg-slate-800 focus:outlin
 
 function Add() {
   return (
-    <div className="col-span-2 sm:col-span-1 justify-self-center">
+    <div className="col-span-1 sm:col-span-1 justify-self-center">
       <Link href="/new">
         <button
           type="button"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-2.5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="text-white bg-[#3786B2] hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-2.5 py-2.5 text-center mr-2 mb-2 dark:bg-[#3786B2] dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           <svg
             className="w-6 h-6"

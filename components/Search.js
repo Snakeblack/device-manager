@@ -4,7 +4,7 @@ function Search() {
   return (
     <div 
       id="search"
-      className="mb-9 md:col-span-9 lg:col-span-10 col-span-10"
+      className="mb-9 md:col-span-9 lg:col-span-11 col-span-11"
     >
       <form>
         <label
@@ -40,7 +40,7 @@ function Search() {
           />
           <button
             type="submit"
-            className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white absolute right-2.5 bottom-2.5 bg-[#3786B2] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-[#3786B2] dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Buscar
           </button>

@@ -77,6 +77,8 @@ const RedForm = () => {
     }
   }, [router.query.id]);
 
+  const defaultValues = 0;
+
   return (
     <div className="w-full max-w-screen-lg mx-auto">
       <h1
@@ -113,7 +115,7 @@ const RedForm = () => {
               name="categoria_id"
               onChange={handleChange}
               className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-              value={red.categoria_id}
+                // TODO: Problemas con el value en el select
               required
             >
               {router.query.id ? (
@@ -121,7 +123,7 @@ const RedForm = () => {
                   {red.categoria}
                 </option>
               ) : (
-                <option selected="">Selecciona la categoría</option>
+                <option value={defaultValues} selected="">Selecciona la categoría</option>
               )}
               {categorias.map((categoria) => (
                 <option key={categoria.id} value={categoria.id}>
@@ -139,13 +141,13 @@ const RedForm = () => {
             name="centro_id"
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-            value={red.centro_id}
+              // TODO: Problemas con el value en el select
             required
           >
             {router.query.id ? (
               <option value={red.centro_id}>{red.centro}</option>
             ) : (
-              <option selected="">Selecciona el centro</option>
+              <option value={defaultValues} selected="">Selecciona el centro</option>
             )}
             {centros.map((centro) => (
               <option key={centro.id} value={centro.id}>

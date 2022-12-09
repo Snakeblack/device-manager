@@ -126,7 +126,7 @@ export function DevicesForm() {
         className="text-2xl font-bold text-gray-900 dark:text-white mb-10"
       >Dispositivo</h1>
       <form onSubmit={handleSubmit}>
-        <div className="grid md:grid-cols-3 md:gap-6">
+        <div className="grid lg:grid-cols-3 md:gap-6">
           <div className="relative z-0 mb-6 w-full group">
             <input
               type="text"
@@ -184,7 +184,7 @@ export function DevicesForm() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 md:gap-6">
+        <div className="grid lg:grid-cols-3 md:gap-6">
           <div className="relative z-0 mb-6 w-full group">
             <input
               type="text"
@@ -237,7 +237,7 @@ export function DevicesForm() {
             </label>
           </div>
         </div>
-        <div className="grid md:grid-cols-3 md:gap-6">
+        <div className="grid lg:grid-cols-3 md:gap-6">
           <div className="relative z-0 mb-6 w-full group">
             <input
               type="text"
@@ -290,11 +290,11 @@ export function DevicesForm() {
             </label>
           </div>
         </div>
-        <div class="relative z-0 mb-6 w-full group">
+        <div className="relative z-0 mb-6 w-full group">
           <textarea
             id="detalles"
             name="detalles"
-            rows="1"
+            rows="2"
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
@@ -307,8 +307,8 @@ export function DevicesForm() {
             Detalles
           </label>
         </div>
-        <div className="grid md:grid-cols-4 md:gap-6">
-          <div class="relative z-0 mb-6 w-full group">
+        <div className="grid lg:grid-cols-4 md:gap-6">
+          <div className="relative z-0 mb-6 w-full group">
             <label htmlFor="congelado" className="sr-only">
               Congelado
             </label>
@@ -317,6 +317,7 @@ export function DevicesForm() {
               name="congelado"
               onChange={handleChange}
               className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              // TODO: Problemas con el value en el select
             >
               {router.query.id ? (
                 <option value={dispositivo.congelado}>
@@ -335,7 +336,7 @@ export function DevicesForm() {
             </select>
           </div>
 
-          <div class="relative z-0 mb-6 w-full group">
+          <div className="relative z-0 mb-6 w-full group">
             <label htmlFor="ubicacion_id" className="sr-only">
               Ubicación
             </label>
@@ -345,6 +346,7 @@ export function DevicesForm() {
               onChange={handleChange}
               className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
               onClick={getUbicaciones}
+                // TODO: Problemas con el value en el select
               required
             >
               {router.query.id ? (
@@ -362,7 +364,7 @@ export function DevicesForm() {
               ))}
             </select>
           </div>
-          <div class="relative z-0 mb-6 w-full group">
+          <div className="relative z-0 mb-6 w-full group">
             <label htmlFor="tipodispositivo_id" className="sr-only">
               Tipo de Dispositivo
             </label>
@@ -372,6 +374,7 @@ export function DevicesForm() {
               onChange={handleChange}
               className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
               onClick={getTipodispositivos}
+                // TODO: Problemas con el value en el select
               required
             >
               {router.query.id ? (
@@ -388,7 +391,7 @@ export function DevicesForm() {
               ))}
             </select>
           </div>
-          <div class="relative z-0 mb-6 w-full group">
+          <div className="relative z-0 mb-6 w-full group">
             <label htmlFor="categoria_id" className="sr-only">
               Categoría:
             </label>
@@ -398,6 +401,7 @@ export function DevicesForm() {
               onChange={handleChange}
               className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
               onClick={getCategorias}
+                // TODO: Problemas con el value en el select
               required
             >
               {router.query.id ? (

@@ -9,7 +9,7 @@ export function Layout({ children }) {
 
       <div className='bg-white dark:bg-gray-900 dark:text-white min-h-screen p-10 flex flex-row'>
         <SideBar />
-        <div className='container mx-9 h-full '>{children}</div>
+        <div className='container ml-14 h-full '>{children}</div>
       </div>
       <ToastContainer />
     </>
