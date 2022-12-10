@@ -9,6 +9,8 @@ export default async function handlerUbication(req, res) {
   }
 }
 
+
+
 const getUbication = async (req, res) => {
   const [result] = await pool.query(
     `SELECT
@@ -23,6 +25,9 @@ const getUbication = async (req, res) => {
       INNER JOIN centro ON red.centro_id = centro.id
       INNER JOIN categoria ON red.categoria_id = categoria.id`
   );
+
+ 
+
   return res.status(200).json(result);
 };
 
@@ -36,6 +41,8 @@ const saveUbication = async (req, res) => {
     red_id,
   });
 
+ 
+
   return res.status(200).json({
     nombre,
     is_aula,
@@ -44,3 +51,4 @@ const saveUbication = async (req, res) => {
     id: result.insertId,
   });
 };
+

@@ -9,6 +9,8 @@ export default async function handlerRed(req, res) {
   }
 }
 
+
+
 const getRed = async (req, res) => {
   const [result] = await pool.query(
     `SELECT red.id, red.nombre as nombre, categoria_id, categoria.nombre as categoria, centro_id, centro.nombre as centro
@@ -16,6 +18,9 @@ const getRed = async (req, res) => {
     INNER JOIN categoria ON categoria.id = red.categoria_id
     INNER JOIN centro ON centro.id = red.centro_id`
   );
+
+ 
+
   return res.status(200).json(result);
 };
 
@@ -28,6 +33,8 @@ const saveRed = async (req, res) => {
       categoria_id,
       centro_id,
     });
+
+   
   
     return res.status(200).json({
       nombre,
