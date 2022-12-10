@@ -14,7 +14,7 @@ function newDeviceTypePage({ data }) {
 
 export const getServerSideProps = async (context) => {
   const { data } = await axios.get(
-    "http://localhost:3000/api/devicetype"
+    "http://nextjs-mysql-crud-snakeblack.vercel.app/api/devicetype"
   );
 
   return {

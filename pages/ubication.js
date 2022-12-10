@@ -18,7 +18,7 @@ function ubication({ data }) {
 }
 
 export const getServerSideProps = async (context) => {
-  const { data } = await axios.get("http://localhost:3000/api/ubications");
+  const { data } = await axios.get("https://nextjs-mysql-crud-snakeblack.vercel.app/api/ubications");
 
   return {
     props: {

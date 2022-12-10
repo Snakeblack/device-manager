@@ -48,7 +48,7 @@ function DevicePage({ device }) {
 
 export const getServerSideProps = async (context) => {
   const { data: device } = await axios.get(
-    "http://localhost:3000/api/device/" + context.query.id
+    "https://nextjs-mysql-crud-snakeblack.vercel.app/api/device/" + context.query.id
   );
 
   return {
