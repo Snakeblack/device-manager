@@ -96,7 +96,7 @@ const UbicationsForm = () => {
             Nombre de la ubicación
           </label>
         </div>
-        <div class="relative z-0 mb-6 w-full group">
+        <div className="relative z-0 mb-6 w-full group">
           <label htmlFor="is_aula" className="sr-only">
             ¿Es un aula?
           </label>
@@ -105,20 +105,20 @@ const UbicationsForm = () => {
             name="is_aula"
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-              // TODO: Problemas con el value en el select
+            defaultValue='Selecciona si es un despacho'
           >
             {router.query.id ? (
               <option value={ubication.is_aula}>
                 {ubication.is_aula ? "Sí" : "No"}
               </option>
             ) : (
-              <option selected="">Selecciona si es un aula</option>
+              <option>Selecciona si es un despacho</option>
             )}
-            <option value="1">Es aula</option>
-            <option value="0">No es aula</option>
+            <option value="0">Es un despacho</option>
+            <option value="1">No es despacho</option>
           </select>
         </div>
-        <div class="relative z-0 mb-6 w-full group">
+        <div className="relative z-0 mb-6 w-full group">
           <label htmlFor="centro_id" className="sr-only">
             Centro
           </label>
@@ -128,12 +128,13 @@ const UbicationsForm = () => {
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             onClick={getCenters}
+            defaultValue='Selecciona un centro'
             required
           >
             {router.query.id ? (
               <option value={ubication.centro_id}>{ubication.centro_id}</option>
             ) : (
-              <option selected="">Selecciona un centro</option>
+              <option>Selecciona un centro</option>
             )}
             {centers.map((center) => (
               <option key={center.id} value={center.id}>
@@ -142,7 +143,7 @@ const UbicationsForm = () => {
             ))}
           </select>
         </div>
-        <div class="relative z-0 mb-6 w-full group">
+        <div className="relative z-0 mb-6 w-full group">
           <label htmlFor="red_id" className="sr-only">
             Red
           </label>
@@ -152,13 +153,13 @@ const UbicationsForm = () => {
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             onClick={getReds}
-              // TODO: Problemas con el value en el select
+            defaultValue='Selecciona una red'
             required
           >
             {router.query.id ? (
               <option value={ubication.red_id}>{ubication.red_id}</option>
             ) : (
-              <option selected="">Selecciona una red</option>
+              <option>Selecciona una red</option>
             )}
             {reds.map((red) => (
               <option key={red.id} value={red.id}>
