@@ -3,6 +3,7 @@ import { Layout } from "../../components/Layout";
 import axios from "axios";
 import Search from "../../components/Search";
 import Add from "../../components/Adds/Add";
+import baseUrl from '../../helpers/baseUrl';
 
 function DevicePage({ data }) {
   // console.log(device);
@@ -19,7 +20,7 @@ function DevicePage({ data }) {
 }
 
 export const getServerSideProps = async (context) => {
-  const { data } = await axios.get("https://nextjs-mysql-crud-snakeblack.vercel.app/api/device");
+  const { data } = await axios.get(`${baseUrl}/api/device`);
 
   return {
     props: {

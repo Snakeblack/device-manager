@@ -2,6 +2,7 @@ import DeviceTypeForm from "../../components/Forms/DeviceTypeForm";
 import axios from "axios";
 import { Layout } from "../../components/Layout";
 import DeviceType from "../../components/List/DeviceType";
+import baseUrl from '../../helpers/baseUrl';
 
 function newDeviceTypePage({ data }) {
   return (
@@ -14,7 +15,7 @@ function newDeviceTypePage({ data }) {
 
 export const getServerSideProps = async (context) => {
   const { data } = await axios.get(
-    "http://nextjs-mysql-crud-snakeblack.vercel.app/api/devicetype"
+    `${baseUrl}/api/devicetype`
   );
 
   return {

@@ -2,6 +2,7 @@ import { Layout } from "../../components/Layout";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import baseUrl from '../../helpers/baseUrl';
 
 function DevicePage({ device }) {
   const router = useRouter();
@@ -48,7 +49,7 @@ function DevicePage({ device }) {
 
 export const getServerSideProps = async (context) => {
   const { data: device } = await axios.get(
-    "https://nextjs-mysql-crud-snakeblack.vercel.app/api/device/" + context.query.id
+    `${baseUrl}/api/device/` + context.query.id
   );
 
   return {

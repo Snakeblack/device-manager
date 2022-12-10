@@ -3,6 +3,7 @@ import axios from "axios";
 import Search from "../components/Search";
 import Ubications from "../components/Ubications";
 import AddUbication from "../components/Adds/AddUbication";
+import baseUrl from '../helpers/baseUrl';
 
 function ubication({ data }) {
   return (
@@ -18,7 +19,7 @@ function ubication({ data }) {
 }
 
 export const getServerSideProps = async (context) => {
-  const { data } = await axios.get("https://nextjs-mysql-crud-snakeblack.vercel.app/api/ubications");
+  const { data } = await axios.get(`${baseUrl}/api/ubications`);
 
   return {
     props: {
