@@ -102,6 +102,7 @@ CREATE TABLE
         CONSTRAINT `incidencias_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
     ) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8;
 
+
 -- query tablas dispostivo, ubicacion, red, centro, categoria, tipodispositivo completo
 
 SELECT
