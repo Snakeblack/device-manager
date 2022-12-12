@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Layout } from "../components/Layout";
-import baseUrl from '../helpers/baseUrl';
+import baseUrl from "../helpers/baseUrl";
 // import { Devices } from "../components/Devices";
 // import Search from "../components/Search";
 // import Add from "../components/Adds/Add";

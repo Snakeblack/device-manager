@@ -3,7 +3,6 @@ import AddRed from "../../components/Adds/AddRed";
 import UbicationsForm from "../../components/Forms/UbicationsForm";
 import { Layout } from "../../components/Layout";
 
-
 function newUbicationPage() {
   return (
     <Layout>

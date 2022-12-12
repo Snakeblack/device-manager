@@ -2,7 +2,7 @@ import { Layout } from "../../components/Layout";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-import baseUrl from '../../helpers/baseUrl';
+import baseUrl from "../../helpers/baseUrl";
 
 function DevicePage({ devicetype }) {
   const router = useRouter();
@@ -12,7 +12,9 @@ function DevicePage({ devicetype }) {
       await axios.delete(`/api/devicetype/${id}`);
       router.push("/");
     } catch (error) {
-      toast.error(error.response.data.message || "Error al eliminar el dispositivo");
+      toast.error(
+        error.response.data.message || "Error al eliminar el dispositivo"
+      );
     }
   };
 

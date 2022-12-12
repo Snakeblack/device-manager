@@ -1,7 +1,8 @@
 import Link from "next/link";
 import React from "react";
 
-export const classAdd = "text-white bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-xs px-2 py-1 text-center mr-2 mb-2 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-blue-800 flex items-center antialiased";
+export const classAdd =
+  "text-white bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-xs px-2 py-1 text-center mr-2 mb-2 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-blue-800 flex items-center antialiased";
 
 function Add() {
   return (

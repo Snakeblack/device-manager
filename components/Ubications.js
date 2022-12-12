@@ -1,15 +1,11 @@
 import Link from "next/link";
-import Card from './Card';
+import Card from "./Card";
 
 const Ubications = ({ ubication }) => {
   return (
     <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-6">
       {ubication.map((ubicacion) => (
-        <Link
-          href={`/ubicacions/${ubicacion.id}`}
-          key={ubicacion.id}
-          
-        >
+        <Link href={`/ubicacions/${ubicacion.id}`} key={ubicacion.id}>
           <Card>
             <h1
               className="text-2xl font-bold text-gray-900 dark:text-gray-50"

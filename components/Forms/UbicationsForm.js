@@ -55,7 +55,6 @@ const UbicationsForm = () => {
   const handleChange = ({ target: { name, value } }) =>
     setUbication({ ...ubication, [name]: value });
 
-
   useEffect(() => {
     const getUbication = async () => {
       const { data } = await axios.get(`/api/ubications/${router.query.id}`);
@@ -75,9 +74,9 @@ const UbicationsForm = () => {
 
   return (
     <div className="w-full max-w-screen-lg mx-auto mt-8">
-      <h1
-        className="text-2xl font-bold text-gray-900 dark:text-white mb-10"
-      >Ubicación</h1>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-10">
+        Ubicación
+      </h1>
       <form onSubmit={handleSubmit}>
         <div className="relative z-0 mb-6 w-full group">
           <input
@@ -105,7 +104,7 @@ const UbicationsForm = () => {
             name="is_aula"
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-            defaultValue='Selecciona si es un despacho'
+            defaultValue="Selecciona si es un despacho"
           >
             {router.query.id ? (
               <option value={ubication.is_aula}>
@@ -128,7 +127,7 @@ const UbicationsForm = () => {
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             onClick={getCenters}
-            defaultValue='Selecciona un centro'
+            defaultValue="Selecciona un centro"
             required
           >
             {router.query.id ? (
@@ -153,7 +152,7 @@ const UbicationsForm = () => {
             onChange={handleChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             onClick={getReds}
-            defaultValue='Selecciona una red'
+            defaultValue="Selecciona una red"
             required
           >
             {router.query.id ? (
@@ -167,7 +166,7 @@ const UbicationsForm = () => {
               </option>
             ))}
           </select>
-        </div> 
+        </div>
 
         <div className="flex justify-end items-center mt-6">
           <button

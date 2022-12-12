@@ -54,9 +54,7 @@ const getDevice = async (req, res) => {
 const deleteDevice = async (req, res) => {
   try {
     const { id } = req.query;
-    await pool.query(`DELETE FROM dispositivo WHERE id = ?`, [
-      id,
-    ]);
+    await pool.query(`DELETE FROM dispositivo WHERE id = ?`, [id]);
     return res.status(204).json();
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -92,7 +90,7 @@ const updateDevice = async (req, res) => {
       cpu: cpu == "" ? null : cpu,
       ram: ram == "" ? null : ram,
       disco_duro: disco_duro == "" ? null : disco_duro,
-      congelado : congelado == "" ? null : congelado,
+      congelado: congelado == "" ? null : congelado,
       detalles: detalles == "" ? null : detalles,
       cuenta_office: cuenta_office == "" ? null : cuenta_office,
       ubicacion_id,

@@ -3,7 +3,7 @@ import { Layout } from "../../components/Layout";
 import axios from "axios";
 import Search from "../../components/Search";
 import Add from "../../components/Adds/Add";
-import baseUrl from '../../helpers/baseUrl';
+import baseUrl from "../../helpers/baseUrl";
 
 function DevicePage({ data }) {
   // console.log(device);

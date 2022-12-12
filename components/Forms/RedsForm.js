@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-import AddCategory from '../Adds/AddCategory';
-import AddCenter from '../Adds/AddCenter';
+import AddCategory from "../Adds/AddCategory";
+import AddCenter from "../Adds/AddCenter";
 
 const RedForm = () => {
   const [red, setRed] = useState({
@@ -81,9 +81,7 @@ const RedForm = () => {
 
   return (
     <div className="w-full max-w-screen-lg mx-auto">
-      <h1
-        className="text-2xl font-bold text-gray-900 dark:text-white"
-      >Red</h1>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Red</h1>
       <div className="flex flex-row items-center justify-end mb-2">
         <AddCategory />
         <AddCenter />
@@ -107,31 +105,29 @@ const RedForm = () => {
           </label>
         </div>
         <div className="relative z-0 mb-6 w-full group">
-            <label htmlFor="categoria_id" className="sr-only">
-              Categoría
-            </label>
-            <select
-              id="categoria_id"
-              name="categoria_id"
-              onChange={handleChange}
-              className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-              defaultValue="Selecciona la categoria"
-              required
-            >
-              {router.query.id ? (
-                <option value={red.categoria_id}>
-                  {red.categoria}
-                </option>
-              ) : (
-                <option>Selecciona la categoria</option>
-              )}
-              {categorias.map((categoria) => (
-                <option key={categoria.id} value={categoria.id}>
-                  {categoria.nombre}
-                </option>
-              ))}
-            </select>
-          </div>
+          <label htmlFor="categoria_id" className="sr-only">
+            Categoría
+          </label>
+          <select
+            id="categoria_id"
+            name="categoria_id"
+            onChange={handleChange}
+            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            defaultValue="Selecciona la categoria"
+            required
+          >
+            {router.query.id ? (
+              <option value={red.categoria_id}>{red.categoria}</option>
+            ) : (
+              <option>Selecciona la categoria</option>
+            )}
+            {categorias.map((categoria) => (
+              <option key={categoria.id} value={categoria.id}>
+                {categoria.nombre}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="relative z-0 mb-6 w-full group">
           <label htmlFor="centro_id" className="sr-only">
             Centro
@@ -156,9 +152,7 @@ const RedForm = () => {
             ))}
           </select>
         </div>
-        <div
-          className="flex justify-end items-center mt-6"
-        >
+        <div className="flex justify-end items-center mt-6">
           <button
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             type="submit"
@@ -168,8 +162,7 @@ const RedForm = () => {
         </div>
       </form>
     </div>
-            
-  )
-}
+  );
+};
 
 export default RedForm;

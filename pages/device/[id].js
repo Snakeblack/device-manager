@@ -2,7 +2,7 @@ import { Layout } from "../../components/Layout";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-import baseUrl from '../../helpers/baseUrl';
+import baseUrl from "../../helpers/baseUrl";
 
 function DevicePage({ device }) {
   const router = useRouter();
@@ -12,7 +12,9 @@ function DevicePage({ device }) {
       await axios.delete(`/api/device/${id}`);
       router.push("/");
     } catch (error) {
-      toast.error(error.response.data.message || "Error al eliminar el dispositivo");
+      toast.error(
+        error.response.data.message || "Error al eliminar el dispositivo"
+      );
     }
   };
 
@@ -25,8 +27,14 @@ function DevicePage({ device }) {
       <p>{device.serial_number}</p>
       <p>{device.sistema_operativo}</p>
       <p>{device.cpu}</p>
-      <p>{device.ram}{device.ram ? "GB" : ""}</p>
-      <p>{device.disco_duro}{device.disco_duro ? "GB" : ""}</p>
+      <p>
+        {device.ram}
+        {device.ram ? "GB" : ""}
+      </p>
+      <p>
+        {device.disco_duro}
+        {device.disco_duro ? "GB" : ""}
+      </p>
       <p>{device.congelado == 1 ? "Congelado" : "No congelado"}</p>
       <p>{device.detalles}</p>
       <p>{device.centro}</p>

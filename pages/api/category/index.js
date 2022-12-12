@@ -9,12 +9,8 @@ export default async function handlerCategoy(req, res) {
   }
 }
 
-
-
 const getCategory = async (req, res) => {
   const [result] = await pool.query(`SELECT * FROM categoria`);
-
- 
 
   return res.status(200).json(result);
 };
@@ -25,8 +21,6 @@ const saveCategory = async (req, res) => {
   const [result] = await pool.query("INSERT INTO categoria SET ?", {
     nombre,
   });
-
- 
 
   return res.status(200).json({
     nombre,

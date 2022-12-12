@@ -1,15 +1,11 @@
-import Link from "next/link"
-import { classAdd } from './Add'
-
+import Link from "next/link";
+import { classAdd } from "./Add";
 
 const AddCenter = () => {
   return (
     <div className="col-span-2 justify-self-center">
       <Link href="/center/new">
-        <button
-          type="button"
-          className={classAdd}
-        >
+        <button type="button" className={classAdd}>
           <svg
             className="w-6 h-6"
             fill="none"
@@ -24,15 +20,11 @@ const AddCenter = () => {
               d="M12 6v6m0 0v6m0-6h6m-6 0H6"
             />
           </svg>
-          <p
-            className="ml-2"
-          >
-            Añadir Centro
-          </p>
+          <p className="ml-2">Añadir Centro</p>
         </button>
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default AddCenter
+export default AddCenter;

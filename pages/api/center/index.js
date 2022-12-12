@@ -9,15 +9,11 @@ export default async function handlerCenter(req, res) {
   }
 }
 
-
-
 const getCenter = async (req, res) => {
   const [result] = await pool.query(
     `SELECT *
     FROM centro`
   );
-
- 
 
   return res.status(200).json(result);
 };
@@ -29,8 +25,6 @@ const saveCenter = async (req, res) => {
     nombre,
     direccion,
   });
-
- 
 
   return res.status(200).json({
     nombre,

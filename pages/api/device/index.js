@@ -9,8 +9,6 @@ export default async function handler(req, res) {
   }
 }
 
-
-
 const getDevices = async (req, res) => {
   try {
     const [result] = await pool.query(
@@ -41,8 +39,6 @@ const getDevices = async (req, res) => {
         INNER JOIN categoria ON red.categoria_id = categoria.id
         INNER JOIN tipodispositivo ON dispositivo.tipodispositivo_id = tipodispositivo.id`
     );
-
-   
 
     return res.status(200).json(result);
   } catch (error) {
@@ -84,8 +80,6 @@ const saveDevice = async (req, res) => {
       categoria_id,
     });
 
-   
-
     return res.status(200).json({
       nombre,
       marca,
@@ -106,4 +100,3 @@ const saveDevice = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
