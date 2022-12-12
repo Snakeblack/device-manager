@@ -6,14 +6,14 @@ function HomePage({ data }) {
   return <Layout></Layout>
 }
 
-export const getServerSideProps = async (context) => {
-  const { data } = await axios.get(`${baseUrl}/api/device`)
+// export const getServerSideProps = async (context) => {
+//   const { data } = await axios.get(`${baseUrl}/api/device`)
 
-  return {
-    props: {
-      data
-    }
-  }
-}
+//   return {
+//     props: {
+//       data
+//     }
+//   }
+// }
 
 export default HomePage
