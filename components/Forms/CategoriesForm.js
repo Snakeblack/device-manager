@@ -39,7 +39,7 @@ const CategoriesForm = () => {
     };
 
     if (router.query.id) {
-      getCategory(router.query.id);
+      getCategory();
     }
   }, [router.query.id]);
 

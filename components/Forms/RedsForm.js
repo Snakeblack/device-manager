@@ -73,7 +73,7 @@ const RedForm = () => {
     getCentros();
 
     if (router.query.id) {
-      getRed(router.query.id);
+      getRed();
     }
   }, [router.query.id]);
 

@@ -1,70 +1,87 @@
-import { pool } from "../../../config/db.js";
+import { pool } from '../../../config/db.js'
 
 export default async function handler(req, res) {
   switch (req.method) {
-    case "GET":
-      return await getDevice(req, res);
-    case "DELETE":
-      return await deleteDevice(req, res);
-    case "PUT":
-      return await updateDevice(req, res);
+    case 'GET':
+      return await getDevice(req, res)
+    case 'DELETE':
+      return await deleteDevice(req, res)
+    case 'PUT':
+      return await updateDevice(req, res)
   }
 }
 
 const getDevice = async (req, res) => {
   try {
-    const { id } = req.query;
-    const [result] = await pool.query(
-      `SELECT
-        dispositivo.id,
-        dispositivo.nombre,
-        dispositivo.marca,
-        dispositivo.modelo,
-        dispositivo.serial_number,
-        dispositivo.sistema_operativo,
-        dispositivo.cpu,
-        dispositivo.ram,
-        dispositivo.disco_duro,
-        dispositivo.congelado,
-        dispositivo.detalles,
-        dispositivo.ubicacion_id,
-        ubicacion.nombre as ubicacion,
-        ubicacion.is_aula,
-        red.nombre as red,
-        centro.nombre as centro,
-        dispositivo.categoria_id,
-        categoria.nombre as categoria,
-        dispositivo.tipodispositivo_id,
-        tipodispositivo.nombre as tipo_dispositivo
-      FROM dispositivo
-        INNER JOIN ubicacion ON dispositivo.ubicacion_id = ubicacion.id
-        INNER JOIN red ON ubicacion.red_id = red.id
-        INNER JOIN centro ON red.centro_id = centro.id
-        INNER JOIN categoria ON red.categoria_id = categoria.id
-        INNER JOIN tipodispositivo ON dispositivo.tipodispositivo_id = tipodispositivo.id
-      WHERE dispositivo.id = ?`,
-      [id]
-    );
-    return res.status(200).json(result[0]);
+    const { id } = req.query
+    const query = `
+      SELECT
+        d.id,
+        d.nombre,
+        d.marca,
+        d.modelo,
+        d.serial_number,
+        d.sistema_operativo,
+        d.cpu,
+        d.ram,
+        d.disco_duro,
+        d.congelado,
+        d.detalles,
+        d.ubicacion_id,
+        u.nombre as ubicacion,
+        u.is_aula,
+        r.nombre as red,
+        c.nombre as centro,
+        d.categoria_id,
+        ca.nombre as categoria,
+        d.tipodispositivo_id,
+        td.nombre as tipo_dispositivo
+      FROM dispositivo d
+      INNER JOIN ubicacion u ON d.ubicacion_id = u.id
+      INNER JOIN red r ON u.red_id = r.id
+      INNER JOIN centro c ON r.centro_id = c.id
+      INNER JOIN categoria ca ON r.categoria_id = ca.id
+      INNER JOIN tipodispositivo td ON d.tipodispositivo_id = td.id
+      WHERE d.id = ?
+    `
+    const [result] = await pool.query(query, [id])
+    return res.status(200).json(result[0])
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message })
   }
-};
+}
 
 const deleteDevice = async (req, res) => {
   try {
-    const { id } = req.query;
-    await pool.query(`DELETE FROM dispositivo WHERE id = ?`, [id]);
-    return res.status(204).json();
+    const { id } = req.query
+    await pool.query(`DELETE FROM dispositivo WHERE id = ?`, [id])
+    return res.status(204).json()
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message })
   }
-};
+}
 
 const updateDevice = async (req, res) => {
   try {
-    const { id } = req.query;
+    const { id } = req.query
     const {
+      nombre,
+      marca,
+      modelo = null,
+      serial_number = null,
+      sistema_operativo = null,
+      cpu = null,
+      ram = null,
+      disco_duro = null,
+      congelado = null,
+      detalles = null,
+      cuenta_office = null,
+      ubicacion_id,
+      categoria_id,
+      tipodispositivo_id
+    } = req.body
+
+    await pool.query(`UPDATE dispositivo SET ? WHERE id = ${id}`, {
       nombre,
       marca,
       modelo,
@@ -78,28 +95,11 @@ const updateDevice = async (req, res) => {
       cuenta_office,
       ubicacion_id,
       categoria_id,
-      tipodispositivo_id,
-    } = req.body;
+      tipodispositivo_id
+    })
 
-    await pool.query(`UPDATE dispositivo SET ? WHERE id = ${id}`, {
-      nombre,
-      marca,
-      modelo: modelo == "" ? null : modelo,
-      serial_number: serial_number == "" ? null : serial_number,
-      sistema_operativo: sistema_operativo == "" ? null : sistema_operativo,
-      cpu: cpu == "" ? null : cpu,
-      ram: ram == "" ? null : ram,
-      disco_duro: disco_duro == "" ? null : disco_duro,
-      congelado: congelado == "" ? null : congelado,
-      detalles: detalles == "" ? null : detalles,
-      cuenta_office: cuenta_office == "" ? null : cuenta_office,
-      ubicacion_id,
-      categoria_id,
-      tipodispositivo_id,
-    });
-
-    return res.status(204).json();
+    return res.status(204).json()
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message })
   }
-};
+}

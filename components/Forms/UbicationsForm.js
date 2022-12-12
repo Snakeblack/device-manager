@@ -68,7 +68,7 @@ const UbicationsForm = () => {
     getCenters();
     getReds();
     if (router.query.id) {
-      getUbication(router.query.id);
+      getUbication();
     }
   }, [router.query.id]);
 

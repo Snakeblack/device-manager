@@ -41,7 +41,7 @@ const CenterForm = () => {
     };
 
     if (router.query.id) {
-      getCenter(router.query.id);
+      getCenter();
     }
   }, [router.query.id]);
 

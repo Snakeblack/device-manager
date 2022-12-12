@@ -8,7 +8,6 @@ import baseUrl from "../helpers/baseUrl";
 function ubication({ data }) {
   return (
     <Layout>
-      {/* separar los dos div uno al lado de otro */}
       <div className="grid grid-cols-12 gap-4">
         <Search />
         <AddUbication />
@@ -20,6 +19,8 @@ function ubication({ data }) {
 
 export const getServerSideProps = async (context) => {
   const { data } = await axios.get(`${baseUrl}/api/ubications`);
+
+  console.log(baseUrl)
 
   return {
     props: {

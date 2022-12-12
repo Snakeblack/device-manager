@@ -39,7 +39,7 @@ function DeviceTypeForm() {
     };
 
     if (router.query.id) {
-      getDeviceType(router.query.id);
+      getDeviceType();
     }
   }, [router.query.id]);
 

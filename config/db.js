@@ -1,6 +1,6 @@
 import { createPool } from "mysql2/promise";
 
-const { DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE } = process.env;
+const { DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE, DB_PORT } = process.env;
 
 const pool = createPool({
   user: DB_USER,
