@@ -1,8 +1,6 @@
 import React from 'react'
-import { useSession, signIn, signOut } from 'next-auth/react'
 
 export default function login() {
-  const { data: session } = useSession()
   return (
     <section className='h-screen bg-white dark:bg-gray-900'>
       <div className='px-6 h-full text-gray-800'>
