@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function login() {
+  const session = false
   return (
     <section className='h-screen bg-white dark:bg-gray-900'>
       <div className='px-6 h-full text-gray-800'>
