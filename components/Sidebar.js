@@ -2,10 +2,12 @@ import { Sidebar } from "flowbite-react";
 import Link from "next/link";
 // TODO: https://react-icons.github.io/react-icons/icons?name=hi o https://heroicons.dev/
 import { HiTable, HiUser, HiSupport } from "react-icons/hi";
+import { isMobileDevice } from '../helpers/responsive';
 
 function SideBar() {
   return (
     <div className="w-fit h-full">
+      { isMobileDevice() ? (<></>) : (
       <Sidebar
         aria-label="Sidebar with multi-level dropdown"
         className="h-full w-64"
@@ -93,7 +95,7 @@ function SideBar() {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
         {/* </div> */}
-      </Sidebar>
+      </Sidebar>)}
     </div>
   );
 }

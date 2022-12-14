@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function login() {
+
   const session = false
   return (
     <section className='h-screen bg-white dark:bg-gray-900'>
@@ -9,7 +10,7 @@ export default function login() {
           <div className='grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0'>
             <img
               src='./img/computer.jpg'
-              className='w-full md:max-h-80 lg:max-h-screen hidden md:block object-cover object-center shadow-xl opacity-75'
+              className='w-full md:max-h-96 lg:max-h-screen hidden md:block object-cover object-center shadow-xl opacity-75'
               alt='Sample image'
             />
           </div>
