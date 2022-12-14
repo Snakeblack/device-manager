@@ -2,7 +2,7 @@ import React from "react";
 
 function Search() {
   return (
-    <div id="search" className="mb-9 md:col-span-9 lg:col-span-11 col-span-11">
+    <div id="search" className="my-9 md:col-span-9 lg:col-span-11 col-span-11">
       <form>
         <label
           htmlFor="default-search"
