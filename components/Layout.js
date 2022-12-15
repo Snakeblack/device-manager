@@ -12,7 +12,7 @@ export function Layout({ children }) {
       <div className="bg-white dark:bg-gray-900 dark:text-white min-h-screen flex flex-row">
         {router.pathname != "/profile" ? <SideBar /> : null}
         
-        <div className="h-full w-full px-5 pt-10 md:px-14 md:pt-20">{children}</div>
+        <div className="h-full w-full px-5 pt-10 md:pt-20 sm:ml-44 sm:px-10 md:ml-40 md:px-20 lg:ml-52 lg:px-36">{children}</div>
       </div>
       <ToastContainer />
     </>

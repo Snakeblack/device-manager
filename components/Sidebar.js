@@ -1,10 +1,18 @@
 import Link from 'next/link'
 import { useState } from 'react'
-// TODO: https://react-icons.github.io/react-icons/icons?name=hi o https://heroicons.dev/
-// import { HiTable, HiUser, HiSupport } from 'react-icons/hi'
-
 
 function SideBar() {
+
+  //funcion para abrir y cerrar el sidebar teniendo en cuenta que el boton es un componente aparte
+  const [sidebarOpen, setSidebarOpen] = useState('sm:flex')
+  const toggleSidebar = () => {
+    if (sidebarOpen === 'sm:flex') {
+      setSidebarOpen('hidden sm:flex')
+    } else {
+      setSidebarOpen('sm:flex')
+    }
+  }
+
   // funcion para abrir y cerrar los botones que hacen el collapse de los menus del sidebar en react
   const [collapseShowForm, setCollapseShowForm] = useState('hidden')
   const toggleForms = () => {
@@ -26,12 +34,58 @@ function SideBar() {
 
   return (
     <>
+      <button
+        className={
+          'sm:hidden fixed z-10 w-10 h-10 bg-gray-900 dark:bg-gray-800 text-white rounded-lg shadow-lg right-5 top-5'
+        }
+        onClick={toggleSidebar}
+      >
+        <svg
+          className='w-10 h-10'
+          fill='currentColor'
+          viewBox='0 0 20 20'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            fillRule='evenodd'
+            d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z'
+            clipRule='evenodd'
+          />
+        </svg>
+      </button>
       <aside
-        className='flex flex-col justify-between top-0 left-0 lg:w-64 h-screen z-10'
+        className={'flex-col justify-between top-0 left-0 lg:w-64 fixed h-screen z-10 '+ sidebarOpen}
         aria-label='Sidenav'
       >
-        <div className='overflow-y-auto py-5 md:px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700'>
-          <ul className='space-y-2'>
+        <div
+          id='logo'
+          className='flex items-center justify-center h-40 w-full bg-gray-900 dark:bg-gray-800'
+        >
+          <Link
+            href='/'
+            className='flex flex-col items-center justify-center mt-4'
+          >
+            <svg
+              className='w-10 h-10'
+              fill='currentColor'
+              viewBox='0 0 20 20'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path d='M13 7H7v6h6V7z' />
+              <path
+                fillRule='evenodd'
+                d='M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z'
+                clipRule='evenodd'
+              />
+            </svg>
+            <span className='text-white text-lg lg:text-2xl font-bold mx-auto inline-flex py-2'>
+              Device Manager
+            </span>
+          </Link>
+        </div>
+
+        <div className='overflow-y-auto py-2 px-3 h-full bg-white  dark:bg-gray-800 '>
+          <ul className='pt-5 space-y-2 border-t border-gray-200 dark:border-gray-700'>
             <li>
               <Link
                 href='/'
@@ -47,7 +101,7 @@ function SideBar() {
                   <path d='M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z'></path>
                   <path d='M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z'></path>
                 </svg>
-                <span className='hidden md:block ml-3'>General</span>
+                <span className='ml-3'>General</span>
               </Link>
             </li>
             <li>
@@ -71,7 +125,7 @@ function SideBar() {
                     clipRule='evenodd'
                   ></path>
                 </svg>
-                <span className='hidden md:block flex-1 ml-3 text-left whitespace-nowrap'>
+                <span className='flex-1 ml-3 text-left whitespace-nowrap'>
                   Formularios
                 </span>
                 <svg
@@ -158,7 +212,7 @@ function SideBar() {
                 >
                   <path d='M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z'></path>
                 </svg>
-                <span className='hidden md:block flex-1 ml-3 text-left whitespace-nowrap'>
+                <span className='flex-1 ml-3 text-left whitespace-nowrap'>
                   Listados
                 </span>
                 <svg
@@ -246,10 +300,10 @@ function SideBar() {
                     clipRule='evenodd'
                   ></path>
                 </svg>
-                <span className='hidden md:block flex-1 ml-3 whitespace-nowrap'>
+                <span className='flex-1 ml-3 whitespace-nowrap'>
                   Incidencias
                 </span>
-                <span className='hidden md:block inline-flex justify-center items-center w-5 h-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800'>
+                <span className='inline-flex justify-center items-center w-4 h-4 md:w-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800'>
                   6
                 </span>
               </Link>
@@ -269,7 +323,7 @@ function SideBar() {
                 >
                   <path d='M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z'></path>
                 </svg>
-                <span className='hidden md:block flex-1 ml-3 text-left whitespace-nowrap'>
+                <span className='flex-1 ml-3 text-left whitespace-nowrap'>
                   Usuarios
                 </span>
                 {/* <svg
@@ -380,10 +434,10 @@ function SideBar() {
             </li>
           </ul> */}
         </div>
-        <div className=' bottom-0 left-0 justify-center p-4 lg:space-x-4 w-full md:flex md:flex-row flex-col bg-white dark:bg-gray-800 z-20'>
+        <div className='flex flex-row bottom-0 left-0 justify-center p-4 lg:space-x-4 w-full bg-white dark:bg-gray-800 z-20'>
           <Link
             href='#'
-            className='lg:inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'
+            className='inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'
           >
             <svg
               aria-hidden='true'
@@ -398,7 +452,7 @@ function SideBar() {
           <Link
             href='#'
             data-tooltip-target='tooltip-settings'
-            className='lg:inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'
+            className='inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'
           >
             <svg
               aria-hidden='true'
@@ -422,7 +476,7 @@ function SideBar() {
             Settings page
             <div className='tooltip-arrow' data-popper-arrow></div>
           </div>
-          <button className='lg:inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'>
+          <button className='inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'>
             <svg
               className='w-6 h-6 text-gray-400 hover:text-white mx-auto'
               fill='currentColor'
