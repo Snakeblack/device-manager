@@ -6,10 +6,10 @@ function SideBar() {
   //funcion para abrir y cerrar el sidebar teniendo en cuenta que el boton es un componente aparte
   const [sidebarOpen, setSidebarOpen] = useState('hidden sm:flex')
   const toggleSidebar = () => {
-    if (sidebarOpen === 'sm:flex') {
+    if (sidebarOpen === 'sm:flex' || sidebarOpen === 'flex') {
       setSidebarOpen('hidden sm:flex')
     } else {
-      setSidebarOpen('sm:flex')
+      setSidebarOpen('flex')
     }
   }
 
