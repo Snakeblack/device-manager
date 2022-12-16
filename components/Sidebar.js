@@ -54,7 +54,7 @@ function SideBar() {
         </svg>
       </button>
       <aside
-        className={'flex-col justify-between top-0 left-0 lg:w-64 fixed h-screen z-10 '+ sidebarOpen}
+        className={'flex-col justify-between top-0 left-0 bottom-0 lg:w-64 fixed h-screen z-10 '+ sidebarOpen}
         aria-label='Sidenav'
       >
         <div
