@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 function SideBar() {
-
   //funcion para abrir y cerrar el sidebar teniendo en cuenta que el boton es un componente aparte
   const [sidebarOpen, setSidebarOpen] = useState('hidden sm:flex')
   const toggleSidebar = () => {
@@ -54,186 +53,190 @@ function SideBar() {
         </svg>
       </button>
       <aside
-        className={'flex-col justify-between top-0 left-0 bottom-0 lg:w-64 fixed h-screen z-10 '+ sidebarOpen}
+        className={
+          'flex-col justify-between top-0 left-0  bg-white  dark:bg-gray-800 lg:w-64 fixed h-screen z-10 ' +
+          sidebarOpen
+        }
         aria-label='Sidenav'
       >
-        <div
-          id='logo'
-          className='flex items-center justify-center h-40 w-full bg-white dark:bg-gray-800'
-        >
-          <Link
-            href='/'
-            className='flex flex-col items-center justify-center mt-4'
+        <div>
+          <div
+            id='logo'
+            className='flex items-center justify-center h-40 w-full bg-white dark:bg-gray-800'
           >
-            <svg
-              className='w-10 h-10 text-gray-900 dark:text-white'
-              fill='currentColor'
-              viewBox='0 0 20 20'
-              xmlns='http://www.w3.org/2000/svg'
+            <Link
+              href='/'
+              className='flex flex-col items-center justify-center mt-4'
             >
-              <path d='M13 7H7v6h6V7z' />
-              <path
-                fillRule='evenodd'
-                d='M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z'
-                clipRule='evenodd'
-              />
-            </svg>
-            <span className='text-gray-800 dark:text-white text-lg lg:text-2xl font-bold mx-auto inline-flex py-2'>
-              Device Manager
-            </span>
-          </Link>
-        </div>
+              <svg
+                className='w-10 h-10 text-gray-900 dark:text-white'
+                fill='currentColor'
+                viewBox='0 0 20 20'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path d='M13 7H7v6h6V7z' />
+                <path
+                  fillRule='evenodd'
+                  d='M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z'
+                  clipRule='evenodd'
+                />
+              </svg>
+              <span className='text-gray-800 dark:text-white text-lg lg:text-2xl font-bold mx-auto inline-flex py-2'>
+                Device Manager
+              </span>
+            </Link>
+          </div>
 
-        <div className='overflow-y-auto py-2 px-3 h-full bg-white  dark:bg-gray-800 '>
-          <ul className='pt-5 space-y-2 border-t border-gray-200 dark:border-gray-700'>
-            <li>
-              <Link
-                href='/'
-                className='flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'
-              >
-                <svg
-                  aria-hidden='true'
-                  className='w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
+          <div className='overflow-y-auto py-2 px-3 bg-white  dark:bg-gray-800 '>
+            <ul className='pt-5 space-y-2 border-t border-gray-200 dark:border-gray-700'>
+              <li>
+                <Link
+                  href='/'
+                  className='flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'
                 >
-                  <path d='M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z'></path>
-                  <path d='M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z'></path>
-                </svg>
-                <span className='ml-3'>General</span>
-              </Link>
-            </li>
-            <li>
-              <button
-                type='button'
-                className='flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                aria-controls='dropdown-pages'
-                data-collapse-toggle='dropdown-pages'
-                onClick={toggleForms}
-              >
-                <svg
-                  aria-hidden='true'
-                  className='flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
+                  <svg
+                    aria-hidden='true'
+                    className='w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path d='M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z'></path>
+                    <path d='M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z'></path>
+                  </svg>
+                  <span className='ml-3'>General</span>
+                </Link>
+              </li>
+              <li>
+                <button
+                  type='button'
+                  className='flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                  aria-controls='dropdown-pages'
+                  data-collapse-toggle='dropdown-pages'
+                  onClick={toggleForms}
                 >
-                  <path
-                    fillRule='evenodd'
-                    d='M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
-                <span className='flex-1 ml-3 text-left whitespace-nowrap'>
-                  Formularios
-                </span>
-                <svg
-                  aria-hidden='true'
-                  className='w-6 h-6'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
+                  <svg
+                    aria-hidden='true'
+                    className='flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      fillRule='evenodd'
+                      d='M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z'
+                      clipRule='evenodd'
+                    ></path>
+                  </svg>
+                  <span className='flex-1 ml-3 text-left whitespace-nowrap'>
+                    Formularios
+                  </span>
+                  <svg
+                    aria-hidden='true'
+                    className='w-6 h-6'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      fillRule='evenodd'
+                      d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'
+                      clipRule='evenodd'
+                    ></path>
+                  </svg>
+                </button>
+                <ul
+                  id='dropdown-pages'
+                  className={'py-2 space-y-2 ' + collapseShowForm}
                 >
-                  <path
-                    fillRule='evenodd'
-                    d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
-              </button>
-              <ul
-                id='dropdown-pages'
-                className={'py-2 space-y-2 ' + collapseShowForm}
-              >
-                <li>
-                  <Link
-                    href='/center/new'
-                    className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  >
-                    Centros
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='/category/new'
-                    className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  >
-                    Categorías
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='/red/new'
-                    className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  >
-                    Redes
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='/ubication/new'
-                    className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  >
-                    Ubicaciones
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='/devicetype/new'
-                    className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  >
-                    Tipo de dispositivos
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='/new'
-                    className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  >
-                    Dispositivos
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <button
-                type='button'
-                className='flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                aria-controls='dropdown-list'
-                data-collapse-toggle='dropdown-list'
-                onClick={toggleList}
-              >
-                <svg
-                  className='flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
+                  <li>
+                    <Link
+                      href='/center/new'
+                      className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                    >
+                      Centros
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/category/new'
+                      className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                    >
+                      Categorías
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/red/new'
+                      className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                    >
+                      Redes
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/ubication/new'
+                      className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                    >
+                      Ubicaciones
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/devicetype/new'
+                      className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                    >
+                      Tipo de dispositivos
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/new'
+                      className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                    >
+                      Dispositivos
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <button
+                  type='button'
+                  className='flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                  aria-controls='dropdown-list'
+                  data-collapse-toggle='dropdown-list'
+                  onClick={toggleList}
                 >
-                  <path d='M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z'></path>
-                </svg>
-                <span className='flex-1 ml-3 text-left whitespace-nowrap'>
-                  Listados
-                </span>
-                <svg
-                  aria-hidden='true'
-                  className='w-6 h-6'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
+                  <svg
+                    className='flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path d='M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z'></path>
+                  </svg>
+                  <span className='flex-1 ml-3 text-left whitespace-nowrap'>
+                    Listados
+                  </span>
+                  <svg
+                    aria-hidden='true'
+                    className='w-6 h-6'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      fillRule='evenodd'
+                      d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'
+                      clipRule='evenodd'
+                    ></path>
+                  </svg>
+                </button>
+                <ul
+                  id='dropdown-pages'
+                  className={'py-2 space-y-2 ' + collapseShowList}
                 >
-                  <path
-                    fillRule='evenodd'
-                    d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
-              </button>
-              <ul
-                id='dropdown-pages'
-                className={'py-2 space-y-2 ' + collapseShowList}
-              >
-                {/* <li>
+                  {/* <li>
                   <Link
                     href='/center/new'
                     className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
@@ -273,60 +276,60 @@ function SideBar() {
                     Tipo de dispositivos
                   </Link>
                 </li> */}
-                <li>
-                  <Link
-                    href='/device'
-                    className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                  <li>
+                    <Link
+                      href='/device'
+                      className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                    >
+                      Dispositivos
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <Link
+                  href='#'
+                  className='flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'
+                >
+                  <svg
+                    className='flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
                   >
-                    Dispositivos
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <Link
-                href='#'
-                className='flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'
-              >
-                <svg
-                  className='flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
+                    <path
+                      fillRule='evenodd'
+                      d='M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z'
+                      clipRule='evenodd'
+                    ></path>
+                  </svg>
+                  <span className='flex-1 ml-3 whitespace-nowrap'>
+                    Incidencias
+                  </span>
+                  <span className='inline-flex justify-center items-center w-4 h-4 md:w-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800'>
+                    6
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <button
+                  type='button'
+                  className='flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                  aria-controls='dropdown-authentication'
+                  data-collapse-toggle='dropdown-authentication'
                 >
-                  <path
-                    fillRule='evenodd'
-                    d='M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
-                <span className='flex-1 ml-3 whitespace-nowrap'>
-                  Incidencias
-                </span>
-                <span className='inline-flex justify-center items-center w-4 h-4 md:w-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800'>
-                  6
-                </span>
-              </Link>
-            </li>
-            <li>
-              <button
-                type='button'
-                className='flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                aria-controls='dropdown-authentication'
-                data-collapse-toggle='dropdown-authentication'
-              >
-                <svg
-                  className='flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path d='M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z'></path>
-                </svg>
-                <span className='flex-1 ml-3 text-left whitespace-nowrap'>
-                  Usuarios
-                </span>
-                {/* <svg
+                  <svg
+                    className='flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path d='M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z'></path>
+                  </svg>
+                  <span className='flex-1 ml-3 text-left whitespace-nowrap'>
+                    Usuarios
+                  </span>
+                  {/* <svg
                   aria-hidden='true'
                   className='w-6 h-6'
                   fill='currentColor'
@@ -339,39 +342,39 @@ function SideBar() {
                     clipRule='evenodd'
                   ></path>
                 </svg> */}
-              </button>
-              <ul
-                id='dropdown-authentication'
-                className='hidden py-2 space-y-2'
-              >
-                <li>
-                  <Link
-                    href='#'
-                    className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  >
-                    Sign In
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='#'
-                    className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  >
-                    Sign Up
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='#'
-                    className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  >
-                    Forgot Password
-                  </Link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          {/* <ul className='pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700'>
+                </button>
+                <ul
+                  id='dropdown-authentication'
+                  className='hidden py-2 space-y-2'
+                >
+                  <li>
+                    <Link
+                      href='#'
+                      className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                    >
+                      Sign In
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='#'
+                      className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                    >
+                      Sign Up
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='#'
+                      className='flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                    >
+                      Forgot Password
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            {/* <ul className='pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700'>
             <li>
               <a
                 href='#'
@@ -433,7 +436,9 @@ function SideBar() {
               </a>
             </li>
           </ul> */}
+          </div>
         </div>
+
         <div className='flex flex-row bottom-0 left-0 justify-center p-4 lg:space-x-4 w-full bg-white dark:bg-gray-800 z-20'>
           <Link
             href='#'
