@@ -1,9 +1,9 @@
-import { Layout } from "../components/Layout";
+import { Layout } from "../../components/Layout";
 import axios from "axios";
-import Search from "../components/Search";
-import Ubications from "../components/Ubications";
-import AddUbication from "../components/Adds/AddUbication";
-import baseUrl from "../helpers/baseUrl";
+import Search from "../../components/Search";
+import Ubications from "../../components/Ubications";
+import AddUbication from "../../components/Adds/AddUbication";
+import baseUrl from "../../helpers/baseUrl";
 
 function ubication({ data }) {
   return (

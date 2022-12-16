@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { classAdd } from "./Add";
+import SVGPlus from './components/svg/SVGPlus';
 
 const AddUbication = () => {
   const router = useRouter();
@@ -14,23 +15,10 @@ const AddUbication = () => {
   }
 
   return (
-    <div className="col-span-2 sm:col-span-3 lg:col-span-2 justify-self-center mr-2">
+    <div className="col-span-2 sm:col-span-3 lg:col-span-2 justify-self-center">
       <Link href="/ubication/new">
         <button type="button" className={buttonClassName}>
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            />
-          </svg>
+          <SVGPlus />
           <p className="ml-2 sm:block">
             {router.pathname !== "/ubication" ? "Añadir Ubicación" : ""}
           </p>

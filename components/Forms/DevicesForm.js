@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 import AddUbication from '../Adds/AddUbication'
 import AddDeviceType from '../Adds/AddDeviceType'
 import AddCategory from '../Adds/AddCategory'
-import { Title } from './components/ComponentsForm'
+import { ButtonGroup, Title } from './components/ComponentsForm'
 
 export function DevicesForm() {
   const [dispositivo, setDispositivo] = useState({
@@ -130,12 +130,12 @@ export function DevicesForm() {
 
   return (
     <div className='w-full max-w-screen-lg mx-auto'>
-      <Title>
-        Dispositivo
-      </Title>
-      <AddUbication />
-      <AddDeviceType />
-      <AddCategory />
+      <Title>Dispositivo</Title>
+      <ButtonGroup>
+        <AddUbication />
+        <AddDeviceType />
+        <AddCategory />
+      </ButtonGroup>
       <form onSubmit={handleSubmit}>
         <div className='grid lg:grid-cols-3 md:gap-6'>
           <div className='relative z-0 mb-6 w-full group'>

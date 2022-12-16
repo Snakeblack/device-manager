@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import AddCategory from '../Adds/AddCategory'
 import AddCenter from '../Adds/AddCenter'
-import { Title } from './components/ComponentsForm'
+import { ButtonGroup, Title } from './components/ComponentsForm'
 
 const RedForm = () => {
   const [red, setRed] = useState({
@@ -81,10 +81,10 @@ const RedForm = () => {
   return (
     <div className='w-full max-w-screen-lg mx-auto'>
       <Title>Red</Title>
-      <div className='flex flex-row items-center justify-end mb-2'>
+      <ButtonGroup>
         <AddCategory />
         <AddCenter />
-      </div>
+      </ButtonGroup>
       <form onSubmit={handleSubmit}>
         <div className='relative z-0 mb-6 w-full group'>
           <input
