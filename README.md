@@ -52,18 +52,10 @@ Puedes ver el [repositorio de Next.js en GitHub](https://github.com/vercel/next.
 
 Este proyecto esta desplegado en [Vercel](https://vercel.com/).
 
+## Autor
 
-## Learn More
+- [M. Retamozo](https://mretamozo.com)
 
-To learn more about Next.js, take a look at the following resources:
+## Licencia
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Este proyecto esta bajo la licencia MIT. Ver el archivo [LICENSE](https://github.com/Snakeblack/device-manager/blob/main/LICENSE) para más detalles.
