@@ -73,7 +73,7 @@ const updateDevice = async (req, res) => {
       cpu = null,
       ram = null,
       disco_duro = null,
-      congelado = null,
+      congelado,
       detalles = null,
       cuenta_office = null,
       ubicacion_id,

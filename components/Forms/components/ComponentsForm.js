@@ -10,7 +10,7 @@ export function Title({ children }) {
 
 export function ButtonGroup({ children }) {
   return (
-    <div className='flex flex-row items-center justify-end gap-2'>
+    <div className='flex flex-row items-center justify-end gap-2 mb-5'>
       {children}
     </div>
   )

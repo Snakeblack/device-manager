@@ -123,8 +123,8 @@ export function DevicesForm() {
   }, [router.query.id])
 
   const getValueState = (dispositivo) => {
-    if (dispositivo.congelado == 1) return 'Si'
-    if (dispositivo.congelado == 0) return 'No'
+    if (dispositivo.congelado == 1) return 'Congelado'
+    if (dispositivo.congelado == 0) return 'No Congelado'
     return ''
   }
 
@@ -330,6 +330,7 @@ export function DevicesForm() {
               className='block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:bg-gray-900 border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer'
               defaultValue='Selecciona el estado'
             >
+              {/* TODO: FALLO AQUI ARREGLARLO */}
               {router.query.id ? (
                 <option value={dispositivo.congelado}>
                   {getValueState(dispositivo)}
@@ -337,9 +338,18 @@ export function DevicesForm() {
               ) : (
                 <option>Selecciona el estado</option>
               )}
-              <option value='0'>Congelado</option>
-              <option value='1'>No Congelado</option>
-              <option value=''>Ninguno</option>
+              {router.query.id == 0 ? (
+                <option value='0'>No Congelado</option>
+              ) : router.query.id == 1 ? (
+                <option value='1'>Congelado</option>
+              ): (
+                <>
+                  <option value='1'>Congelado</option>
+                  <option value='0'>No Congelado</option>
+                </>
+              )
+              }
+              <option value={''}>Ninguno</option>
             </select>
           </div>
 
