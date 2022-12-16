@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import AddUbication from '../Adds/AddUbication'
 import AddDeviceType from '../Adds/AddDeviceType'
 import AddCategory from '../Adds/AddCategory'
+import { Title } from './components/ComponentsForm'
 
 export function DevicesForm() {
   const [dispositivo, setDispositivo] = useState({
@@ -129,9 +130,9 @@ export function DevicesForm() {
 
   return (
     <div className='w-full max-w-screen-lg mx-auto'>
-      <h1 className='text-2xl font-bold text-gray-900 dark:text-white mb-10'>
+      <Title>
         Dispositivo
-      </h1>
+      </Title>
       <AddUbication />
       <AddDeviceType />
       <AddCategory />

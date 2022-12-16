@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { Title } from './components/ComponentsForm';
 
 const CenterForm = () => {
   const [center, setCenter] = useState({
@@ -47,9 +48,9 @@ const CenterForm = () => {
 
   return (
     <div className="w-full max-w-screen-lg mx-auto">
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-10">
+      <Title>
         Centro
-      </h1>
+      </Title>
       <form onSubmit={handleSubmit}>
         <div className="relative z-0 mb-6 w-full group">
           <input
