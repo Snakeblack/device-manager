@@ -36,7 +36,7 @@ function SideBar() {
     <>
       <button
         className={
-          'sm:hidden fixed z-10 w-10 h-10 bg-gray-900 dark:bg-gray-800 text-white rounded-lg shadow-lg right-5 top-5'
+          'sm:hidden fixed z-10 w-10 h-10 bg-gray-700 dark:bg-gray-800 text-white rounded-lg shadow-lg right-5 top-5'
         }
         onClick={toggleSidebar}
       >
@@ -59,14 +59,14 @@ function SideBar() {
       >
         <div
           id='logo'
-          className='flex items-center justify-center h-40 w-full bg-gray-900 dark:bg-gray-800'
+          className='flex items-center justify-center h-40 w-full bg-white dark:bg-gray-800'
         >
           <Link
             href='/'
             className='flex flex-col items-center justify-center mt-4'
           >
             <svg
-              className='w-10 h-10'
+              className='w-10 h-10 text-gray-900 dark:text-white'
               fill='currentColor'
               viewBox='0 0 20 20'
               xmlns='http://www.w3.org/2000/svg'
@@ -78,7 +78,7 @@ function SideBar() {
                 clipRule='evenodd'
               />
             </svg>
-            <span className='text-white text-lg lg:text-2xl font-bold mx-auto inline-flex py-2'>
+            <span className='text-gray-800 dark:text-white text-lg lg:text-2xl font-bold mx-auto inline-flex py-2'>
               Device Manager
             </span>
           </Link>
