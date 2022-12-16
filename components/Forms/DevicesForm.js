@@ -2,6 +2,9 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
+import AddUbication from '../Adds/AddUbication'
+import AddDeviceType from '../Adds/AddDeviceType'
+import AddCategory from '../Adds/AddCategory'
 
 export function DevicesForm() {
   const [dispositivo, setDispositivo] = useState({
@@ -129,6 +132,9 @@ export function DevicesForm() {
       <h1 className='text-2xl font-bold text-gray-900 dark:text-white mb-10'>
         Dispositivo
       </h1>
+      <AddUbication />
+      <AddDeviceType />
+      <AddCategory />
       <form onSubmit={handleSubmit}>
         <div className='grid lg:grid-cols-3 md:gap-6'>
           <div className='relative z-0 mb-6 w-full group'>
