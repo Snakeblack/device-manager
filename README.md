@@ -1,22 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Esta es un proyecto de aplicación web creado con [Next.js](https://nextjs.org/) generado con [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+La pagina actualmente esta en desarollo, pero aun asi puedes verla en [devicemanager.mretamozo.com](https://devicemanager.mretamozo.com).
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Si quieres correr el proyecto en tu maquina local, sigue los siguientes pasos:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Prerequisitos
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- [Node.js](https://nodejs.org/es/)
+- [Pnpm](https://pnpm.io/)
+- [MySQL](https://www.mysql.com/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Instalación
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Clona el repositorio
+2. Instala las dependencias con `pnpm install`
+
+### Configuración
+
+1. Crea un archivo `.env.local` en la raiz del proyecto
+2. Agrega las siguientes variables de entorno:
+
+    ```bash
+    # Database
+    DB_USER=root
+    DB_DATABASE=dispositivos
+    DB_HOST=localhost
+    DB_PASSWORD=[tu contraseña]
+    DB_PORT=[tu puerto de mysql]
+    ```
+
+3. Crear la base de datos con el nombre `dispositivos` en tu servidor de MySQL.
+4. Crea las tablas con los statements que se encuentran en el archivo `db.sql` en el directorio `database`.
+
+### Correr el proyecto
+
+1. Corre el proyecto con `pnpm dev run`
+2. Abre [localhost:3000](http://localhost:3000) con tu navegador para ver el resultado.
+
+## Aprende más
+
+Para aprender más sobre Next.js, echa un vistazo a los siguientes recursos:
+
+- [Documentación de Next.js](https://nextjs.org/docs) - aprende sobre las características y API de Next.js.
+- [Aprende Next.js](https://nextjs.org/learn) - un tutorial interactivo de Next.js.
+
+Puedes ver el [repositorio de Next.js en GitHub](https://github.com/vercel/next.js/).
+
+## Despleado en Vercel
+
+Este proyecto esta desplegado en [Vercel](https://vercel.com/).
+
 
 ## Learn More
 
