@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
         <title>Device Manager</title>
         <meta property='og:title' content='Device Manager' key='title' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-        <meta http-equiv='content-language' content='es' />
+        <meta httpEquiv='content-language' content='es' />
         <meta
           name='description'
           content='Aplicación para la gestion y control de los dispositivos'
