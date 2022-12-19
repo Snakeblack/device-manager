@@ -6,7 +6,7 @@ import UAParser from 'ua-parser-js';
 export function height() {
   const router = useRouter();
   const parser = new UAParser(userAgent);
-  const screenHeight = parser.getDevice().model === 'Android' ? 'pb-45' : '';
+  const screenHeight = parser.getDevice().model === 'Android' ? 'pb-60' : '';
 
   return screenHeight;
 }
