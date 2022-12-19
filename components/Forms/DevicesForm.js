@@ -342,13 +342,12 @@ export function DevicesForm() {
                 <option value='0'>No Congelado</option>
               ) : router.query.id == 1 ? (
                 <option value='1'>Congelado</option>
-              ): (
+              ) : (
                 <>
                   <option value='1'>Congelado</option>
                   <option value='0'>No Congelado</option>
                 </>
-              )
-              }
+              )}
               <option value={''}>Ninguno</option>
             </select>
           </div>
