@@ -439,7 +439,7 @@ function SideBar() {
           </div>
         </div>
 
-        <div className='flex flex-row bottom-0 left-0 justify-center p-4 lg:space-x-4 w-full bg-white dark:bg-gray-800 z-20'>
+        <div className='flex flex-row bottom-0 left-0 justify-center p-4 pb-20 lg:space-x-4 w-full bg-white dark:bg-gray-800 z-20'>
           <Link
             href='#'
             className='inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'
