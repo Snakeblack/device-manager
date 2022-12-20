@@ -1,13 +1,10 @@
 import Link from 'next/link'
 import { useState } from 'react'
-import { height } from '../helpers/height'
 
 
 function SideBar() {
   // ejecutar la funcion height para obtener la altura de la ventana del navegador
-  const windowHeight = height();
 
-  console.log(windowHeight)
 
   //funcion para abrir y cerrar el sidebar teniendo en cuenta que el boton es un componente aparte
   const [sidebarOpen, setSidebarOpen] = useState('hidden sm:flex')
@@ -61,7 +58,7 @@ function SideBar() {
       </button>
       <aside
         className={
-          `flex-col justify-between top-0 left-0 bottom-0 bg-white  dark:bg-gray-800 lg:w-64 h-screen fixed z-10 ` +
+          `flex-col justify-between top-0 left-0 bottom-0 bg-white  dark:bg-gray-800 lg:w-64 fixed z-10 ` +
           sidebarOpen
         }
         
@@ -447,7 +444,7 @@ function SideBar() {
           </div>
         </div>
 
-        <div className={'flex flex-row bottom-0 left-0 justify-around p-4 lg:space-x-4 w-full bg-white dark:bg-gray-800 z-20 ' + windowHeight}>
+        <div className='flex flex-row bottom-0 left-0 justify-around p-4 lg:space-x-4 w-full bg-white dark:bg-gray-800 z-20'>
           <Link
             href='#'
             className='inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'
