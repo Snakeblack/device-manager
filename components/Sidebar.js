@@ -1,5 +1,7 @@
+import { Button } from 'flowbite-react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { ThemeButton } from './Buttons/ThemeButton'
 
 
 function SideBar() {
@@ -445,20 +447,7 @@ function SideBar() {
         </div>
 
         <div className='flex flex-row bottom-0 left-0 justify-around p-4 lg:space-x-4 w-full bg-white dark:bg-gray-800 z-20'>
-          <Link
-            href='#'
-            className='inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'
-          >
-            <svg
-              aria-hidden='true'
-              className='w-6 h-6 mx-auto'
-              fill='currentColor'
-              viewBox='0 0 20 20'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path d='M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z'></path>
-            </svg>
-          </Link>
+          <ThemeButton />
           <Link
             href='#'
             data-tooltip-target='tooltip-settings'
@@ -486,7 +475,7 @@ function SideBar() {
             Settings page
             <div className='tooltip-arrow' data-popper-arrow></div>
           </div>
-          <button className='inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'>
+          <Link href='/profile' className='inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600'>
             <svg
               className='w-6 h-6 text-gray-400 hover:text-white mx-auto'
               fill='currentColor'
@@ -499,7 +488,7 @@ function SideBar() {
                 clipRule='evenodd'
               />
             </svg>
-          </button>
+          </Link>
         </div>
       </aside>
     </>
