@@ -61,7 +61,7 @@ function SideBar() {
       </button>
       <aside
         className={
-          `flex-col justify-between top-0 left-0 bg-white  dark:bg-gray-800 lg:w-64 h-screen fixed z-10 ` +
+          `flex-col justify-between top-0 left-0 bottom-0 bg-white  dark:bg-gray-800 lg:w-64 h-screen fixed z-10 ` +
           sidebarOpen
         }
         
