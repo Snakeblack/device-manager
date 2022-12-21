@@ -8,7 +8,7 @@ export function ThemeButton() {
       {colorTheme === 'light' ? (
         <svg
           onClick={() => setTheme('light')}
-          class='w-6 h-6'
+          className='w-6 h-6'
           fill='currentColor'
           viewBox='0 0 20 20'
           xmlns='http://www.w3.org/2000/svg'
@@ -22,7 +22,7 @@ export function ThemeButton() {
       ) : (
         <svg
           onClick={() => setTheme('dark')}
-          class='w-6 h-6'
+          className='w-6 h-6'
           fill='currentColor'
           viewBox='0 0 20 20'
           xmlns='http://www.w3.org/2000/svg'
