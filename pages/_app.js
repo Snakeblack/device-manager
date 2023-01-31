@@ -6,6 +6,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <html lang='es' />
         <link
           rel='icon'
           href='/favicon-light.ico'

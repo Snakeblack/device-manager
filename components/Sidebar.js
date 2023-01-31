@@ -64,7 +64,7 @@ function SideBar() {
           sidebarOpen
         }
         
-        aria-label='Sidenav'
+        aria-label='Menu lateral'
       >
         <div>
           <div
@@ -118,7 +118,7 @@ function SideBar() {
                 <button
                   type='button'
                   className='flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  aria-controls='dropdown-pages'
+                  aria-controls='lista de formularios'
                   data-collapse-toggle='dropdown-pages'
                   onClick={toggleForms}
                 >
@@ -210,7 +210,7 @@ function SideBar() {
                 <button
                   type='button'
                   className='flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  aria-controls='dropdown-list'
+                  aria-controls='lista de listados'
                   data-collapse-toggle='dropdown-list'
                   onClick={toggleList}
                 >
@@ -322,7 +322,7 @@ function SideBar() {
                 <button
                   type='button'
                   className='flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
-                  aria-controls='dropdown-authentication'
+                  aria-controls='usuarios'
                   data-collapse-toggle='dropdown-authentication'
                 >
                   <svg
